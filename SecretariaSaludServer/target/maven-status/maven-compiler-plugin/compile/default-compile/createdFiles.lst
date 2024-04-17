@@ -1,0 +1,9 @@
+servidor\SocketServer.class
+logica\Logica.class
+dao\ExpedienteDAO.class
+dominio\Medico.class
+dao\PacienteDAO.class
+dominio\Paciente.class
+bd\Conexion.class
+dominio\Expediente.class
+dao\MedicoDAO.class
