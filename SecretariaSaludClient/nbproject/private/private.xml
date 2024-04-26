@@ -3,9 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/kingu/Documents/GitHub/ProyectoDistribuidos/SecretariaSaludClient/src/java/prueba/Prueba.java</file>
-            <file>file:/C:/Users/kingu/Documents/GitHub/ProyectoDistribuidos/SecretariaSaludClient/web/index.html</file>
-            <file>file:/C:/Users/kingu/Documents/GitHub/ProyectoDistribuidos/SecretariaSaludClient/src/java/css/estilos.css</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/src/java/cliente/SocketCliente.java</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/contact.jsp</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/registroPacientes.jsp</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/index.jsp</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/WEB-INF/glassfish-web.xml</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/expedientesM.jsp</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/indexM.jsp</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/css/estilos.css</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/about.jsp</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/miExpedienteP.jsp</file>
         </group>
     </open-files>
 </project-private>
