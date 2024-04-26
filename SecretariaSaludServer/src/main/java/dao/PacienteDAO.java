@@ -13,13 +13,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class PacienteDAO {
+
     private final Connection conexion;
 
     public PacienteDAO() {
         this.conexion = new Conexion().getConexion();
     }
 
-    public boolean agregarPaciente(Paciente paciente){
+    public boolean agregarPaciente(Paciente paciente) {
         try (PreparedStatement statement = conexion.prepareStatement(
                 "INSERT INTO pacientes (nombre, curp, fechaNacimiento, tutor, pass) VALUES (?, ?, ?, ?, ?)")) {
             statement.setString(1, paciente.getNombre());
@@ -50,7 +51,7 @@ public class PacienteDAO {
         return false;
     }
 
-    public boolean eliminarPaciente(String curp){
+    public boolean eliminarPaciente(String curp) {
         try (PreparedStatement statement = conexion.prepareStatement("DELETE FROM pacientes WHERE curp=?")) {
             statement.setString(1, curp);
             return statement.executeUpdate() > 0;
@@ -63,7 +64,7 @@ public class PacienteDAO {
     public List<Paciente> obtenerPacientes() {
         List<Paciente> pacientes = new ArrayList<>();
         try (PreparedStatement statement = conexion.prepareStatement("SELECT * FROM pacientes");
-             ResultSet result = statement.executeQuery()) {
+                ResultSet result = statement.executeQuery()) {
             while (result.next()) {
                 Paciente paciente = new Paciente();
                 paciente.setId(result.getInt("id"));
@@ -78,5 +79,54 @@ public class PacienteDAO {
             Logger.getLogger(PacienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return pacientes;
+    }
+
+    public boolean autenticar(String curp, String pass) {
+        try {
+            String query = "SELECT * FROM pacientes WHERE curp=? AND pass=?";
+            PreparedStatement statement = conexion.prepareStatement(query);
+            statement.setString(1, curp);
+            statement.setString(2, pass);
+            ResultSet result = statement.executeQuery();
+
+            if (result.next()) {
+                // Si hay al menos una fila, las credenciales son válidas
+                return true;
+            }
+
+            statement.close();
+            result.close();
+        } catch (SQLException e) {
+            System.err.println("Error al autenticar paciente: " + e.getMessage());
+        }
+        // Si no se encontraron filas con las credenciales dadas, devolvemos false
+        return false;
+    }
+
+    public Paciente consultarPaciente(String curp) {
+        Paciente paciente = null;
+        try {
+            String query = "SELECT * FROM pacientes WHERE curp=?";
+            PreparedStatement statement = conexion.prepareStatement(query);
+            statement.setString(1, curp);
+            ResultSet result = statement.executeQuery();
+
+            if (result.next()) {
+                // Si se encontró una fila, creamos un objeto Paciente y lo llenamos con los datos
+                paciente = new Paciente();
+                paciente.setId(result.getInt("id"));
+                paciente.setNombre(result.getString("nombre"));
+                paciente.setCurp(result.getString("curp"));
+                paciente.setFechaNacimiento(result.getDate("fechaNacimiento"));
+                paciente.setTutor(result.getString("tutor"));
+                paciente.setPass(result.getString("pass"));
+            }
+
+            statement.close();
+            result.close();
+        } catch (SQLException e) {
+            System.err.println("Error al consultar paciente: " + e.getMessage());
+        }
+        return paciente;
     }
 }

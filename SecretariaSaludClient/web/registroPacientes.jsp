@@ -12,21 +12,23 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Registro de Pacientes - Expediente Clínico Electrónico</title>
-        <link rel="stylesheet" href="estilos.css">
+        <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div id="header">
-            <img src="logo.png" alt="Logo de la aplicación">
+            <img src="img/logo.png" alt="Logo de la aplicación">
             <ul>
+                <li><a href="index.jsp">Inicio</a></li>
                 <li><a href="#">Ingresar</a></li>
-                <li><a href="#">Registrarse</a></li>
-                <li><a href="#">Acerca de nosotros</a></li>
-                <li><a href="#">Contáctanos</a></li>
+                <li><a href="registroMedicos.jsp">Registrarse como medico</a></li>
+                <li><a href="registroPacientes.jsp">Registrarse como paciente</a></li>
+                <li><a href="about.jsp">Acerca de nosotros</a></li>
+                <li><a href="contact.jsp">Contáctanos</a></li>
             </ul>
         </div>
         <div id="content">
             <h1>Registro de Pacientes</h1>
-            <form action="procesar_registro.php" method="post">
+            <form action="RegistroPacientesServlet" method="post">
                 <label for="curp">CURP:</label>
                 <input type="text" id="curp" name="curp" required><br><br>
                 <label for="nombre">Nombre:</label>
@@ -40,7 +42,7 @@
                     <input type="text" id="tutorNombre" name="tutorNombre"><br><br>
                 </div>
                 <label for="contraseña">Contraseña:</label>
-                <input type="password" id="contraseña" name="contraseña" required><br><br>
+                <input type="password" id="contrasena" name="contrasena" required><br><br>
                 <input type="submit" value="Registrar">
             </form>
         </div>

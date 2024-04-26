@@ -11,15 +11,16 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Contacto - Expediente Clínico Electrónico</title>
-        <link rel="stylesheet" href="estilos.css">
+        <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div id="header">
-            <img src="logo.png" alt="Logo de la aplicación">
+            <img src="img/logo.png" alt="Logo de la aplicacion"/>
             <ul>
-                <li><a href="#">Ingresar</a></li>
-                <li><a href="#">Registrarse como medico</a></li>
-                <li><a href="#">Registrarse como paciente</a></li>
+                <li><a href="index.jsp">Inicio</a></li>
+                <li><a href="indexP.jsp">Ingresar</a></li>
+                <li><a href="registroMedicos.jsp">Registrarse como medico</a></li>
+                <li><a href="registroPacientes.jsp">Registrarse como paciente</a></li>
                 <li><a href="about.jsp">Acerca de nosotros</a></li>
                 <li><a href="contact.jsp">Contáctanos</a></li>
             </ul>

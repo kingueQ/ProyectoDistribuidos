@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExpedienteDAO {
+
     private final Connection conexion;
 
     public ExpedienteDAO() {
@@ -95,5 +96,33 @@ public class ExpedienteDAO {
             System.err.println("Error al obtener expedientes: " + e.getMessage());
         }
         return expedientes;
+    }
+
+    public Expediente consultarExpediente(int idPaciente) {
+        Expediente expediente = null;
+        try {
+            String query = "SELECT * FROM expedientes WHERE idPaciente=?";
+            PreparedStatement statement = conexion.prepareStatement(query);
+            statement.setInt(1, idPaciente);
+            ResultSet result = statement.executeQuery();
+
+            if (result.next()) {
+                // Si se encontró una fila, creamos un objeto Expediente y lo llenamos con los datos
+                expediente = new Expediente();
+                expediente.setId(result.getInt("id"));
+                expediente.setIdPaciente(result.getInt("idPaciente"));
+                expediente.setImagenes(result.getString("imagenes"));
+                expediente.setTextos(result.getString("textos"));
+                expediente.setDocumentos(result.getString("documentos"));
+                expediente.setMedicos(result.getString("medicosAcceso"));
+                expediente.setAcceso(result.getBoolean("tipoAcceso"));
+            }
+
+            statement.close();
+            result.close();
+        } catch (SQLException e) {
+            System.err.println("Error al consultar expediente: " + e.getMessage());
+        }
+        return expediente;
     }
 }

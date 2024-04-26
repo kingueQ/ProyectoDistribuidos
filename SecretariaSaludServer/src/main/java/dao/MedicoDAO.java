@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MedicoDAO {
+
     private final Connection conexion;
 
     public MedicoDAO() {
@@ -91,4 +92,53 @@ public class MedicoDAO {
         }
         return medicos;
     }
+
+    public boolean autenticar(String cedula, String pass) {
+        try {
+            String query = "SELECT * FROM medicos WHERE cedula=? AND pass=?";
+            PreparedStatement statement = conexion.prepareStatement(query);
+            statement.setString(1, cedula);
+            statement.setString(2, pass);
+            ResultSet result = statement.executeQuery();
+
+            if (result.next()) {
+                // Si hay al menos una fila, las credenciales son válidas
+                return true;
+            }
+
+            statement.close();
+            result.close();
+        } catch (SQLException e) {
+            System.err.println("Error al autenticar: " + e.getMessage());
+        }
+        // Si no se encontraron filas con las credenciales dadas, devolvemos false
+        return false;
+    }
+
+    public Medico consultarMedico(String cedula) {
+        Medico medico = null;
+        try {
+            String query = "SELECT * FROM medicos WHERE cedula=?";
+            PreparedStatement statement = conexion.prepareStatement(query);
+            statement.setString(1, cedula);
+            ResultSet result = statement.executeQuery();
+
+            if (result.next()) {
+                // Si se encontró una fila, creamos un objeto Medico y lo llenamos con los datos
+                medico = new Medico();
+                medico.setId(result.getInt("id"));
+                medico.setCedula(result.getString("cedula"));
+                medico.setNombre(result.getString("nombre"));
+                medico.setPass(result.getString("pass"));
+                medico.setEspecialidad(result.getString("especialidad"));
+            }
+
+            statement.close();
+            result.close();
+        } catch (SQLException e) {
+            System.err.println("Error al consultar médico: " + e.getMessage());
+        }
+        return medico;
+    }
+    
 }

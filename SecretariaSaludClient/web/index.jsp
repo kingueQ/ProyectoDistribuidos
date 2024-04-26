@@ -11,18 +11,34 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Bienvenido - Expediente Clínico Electrónico</title>
-        <link rel="stylesheet" href="estilos.css">
+        <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
+        
     </head>
     <body>
         <div id="header">
-            <img src="logo.png" alt="Logo de la aplicación">
+            <img src="img/logo.png" alt="Logo de la aplicación">
             <ul>
-                <li><a href="#">Ingresar</a></li>
-                <li><a href="#">Registrarse como medico</a></li>
-                <li><a href="#">Registrarse como paciente</a></li>
+                <li><a href="index.jsp">Inicio</a></li>
+                <li><a href="#" onclick="mostrarModal()">Ingresar</a></li>
+                <li><a href="registroMedicos.jsp">Registrarse como medico</a></li>
+                <li><a href="registroPacientes.jsp">Registrarse como paciente</a></li>
                 <li><a href="about.jsp">Acerca de nosotros</a></li>
                 <li><a href="contact.jsp">Contáctanos</a></li>
             </ul>
+        </div>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="cerrarModal()">&times;</span>
+                <h2>Ingrese sus credenciales</h2>
+                <form action="AutenticacionServlet" method="post">
+                    <label for="credencial">Cédula médica o CURP:</label>
+                    <input type="text" id="credencial" name="credencial" required>
+                    <label for="contrasena">Contraseña:</label>
+                    <input type="password" id="contrasena" name="contrasena" required>
+                    <input type="submit" value="Ingresar">
+                </form>
+                <p>No tienes una cuenta? <a href="#" onclick="mostrarRegistro()">Regístrate aquí</a></p>
+            </div>
         </div>
         <div id="welcome-message">
             <h1>Bienvenido al Expediente Clínico Electrónico</h1>
@@ -36,6 +52,16 @@
                 <!-- Agrega más funcionalidades aquí -->
             </ul>
         </div>
+        <!-- Opciones de registro -->
+        <div id="opciones-registro" style="display: none;">
+            <h2>Regístrate como</h2>
+            <ul>
+                <li><a href="registroPacientes.jsp">Paciente</a></li>
+                <li><a href="registroMedicos.jsp">Médico</a></li>
+            </ul>
+        </div>
+        <script src="js/comandos.js" type="text/javascript"></script>
     </body>
 </html>
+
 

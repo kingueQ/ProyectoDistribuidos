@@ -11,16 +11,16 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Mi Expediente - Expediente Clínico Electrónico</title>
-        <link rel="stylesheet" href="estilos.css">
+        <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div id="header">
-            <img src="logo.png" alt="Logo de la aplicación">
+            <img src="img/logo.png" alt="Logo de la aplicación">
             <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Mi Expediente</a></li>
-                <li><a href="#">Ver Información</a></li>
-                <li><a href="#">Cerrar Sesión</a></li>
+                <li><a href="indexP.jsp">Inicio</a></li>
+                <li><a href="miExpedienteP.jsp">Mi Expediente</a></li>
+                <li><a href="informacionP.jsp">Ver Información</a></li>
+                <li><a href="index.jsp">Cerrar Sesión</a></li>
             </ul>
         </div>
         <div id="content">
