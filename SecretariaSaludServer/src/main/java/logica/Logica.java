@@ -97,11 +97,11 @@ public class Logica {
     public String consultarPacientes() {
 
         List<Paciente> pacientes = pacienteDAO.obtenerPacientes();
-        StringBuilder result = new StringBuilder();
+        String result = "";
         for (Paciente paciente : pacientes) {
-            result.append(paciente.getId()).append("!").append(paciente.getNombre()).append("!").append(paciente.getCurp()).append("!").append(paciente.getFechaNacimiento()).append("!").append(paciente.getTutor()).append("!?"); // Usamos "!?" como delimitador
+            result = result + paciente.getId() + "!" + paciente.getCurp() + "!" + paciente.getNombre() + "!" + paciente.getFechaNacimiento() + "!" + paciente.getTutor() + "!?";
         }
-        return result.toString();
+        return result;
     }
 
     public String consultarExpedientes() {
@@ -127,7 +127,7 @@ public class Logica {
     public String consultarPaciente(String curp) {
         Paciente paciente = pacienteDAO.consultarPaciente(curp);
         if (paciente != null) {
-            return paciente.getId() + "!" + paciente.getNombre() + "!" + paciente.getCurp() + "!" + paciente.getFechaNacimiento() + "!" + paciente.getTutor();
+            return paciente.getId() + "!" + paciente.getCurp() + "!" + paciente.getNombre() + "!" + paciente.getFechaNacimiento() + "!" + paciente.getTutor() + "!" + paciente.getPass();
         } else {
             return "Paciente no encontrado";
         }

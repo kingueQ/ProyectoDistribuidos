@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "AutenticacionServlet", urlPatterns = {"/AutenticacionServlet"})
 public class AutenticacionServlet extends HttpServlet {
@@ -31,8 +32,12 @@ public class AutenticacionServlet extends HttpServlet {
             if (respuesta.equals("true")) {
                 // Si la respuesta es true, redirigir a indexM.jsp
                 if(cedulaCurp.length()==18){
+                    HttpSession objSesion = request.getSession(true);
+                    objSesion.setAttribute("curp", cedulaCurp);
                     response.sendRedirect("indexP.jsp");
                 }else{
+                    HttpSession objSesion = request.getSession(true);
+                    objSesion.setAttribute("cedula", cedulaCurp);
                     response.sendRedirect("indexM.jsp");
                 }
             } else {

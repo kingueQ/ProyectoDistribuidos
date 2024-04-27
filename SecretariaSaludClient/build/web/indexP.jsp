@@ -5,6 +5,15 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    HttpSession objSesion = request.getSession(false);
+    String curp = (String) objSesion.getAttribute("curp");
+    if (curp == null || curp.isEmpty()) {
+        // Si el correo no está presente en la sesión, redirige a la página de inicio de sesión
+        response.sendRedirect("index.jsp");
+    }
+    objSesion.setAttribute("curp", curp);
+%>
 <!DOCTYPE html>
 <html lang="es">
     <head>

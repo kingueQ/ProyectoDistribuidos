@@ -4,7 +4,25 @@
     Author     : kingu
 --%>
 
+<%@page import="cliente.SocketCliente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    HttpSession objSesion = request.getSession(false);
+    String cedula = (String) objSesion.getAttribute("cedula");
+    if (cedula == null || cedula.isEmpty()) {
+        // Si el correo no está presente en la sesión, redirige a la página de inicio de sesión
+        response.sendRedirect("index.jsp");
+    }
+    objSesion.setAttribute("cedula", cedula);
+    String serverAddress = "localhost"; // Dirección IP del servidor
+    int serverPort = 12345; // Puerto del servidor
+    SocketCliente cliente = new SocketCliente(serverAddress, serverPort);
+    String respuesta = cliente.enviarMensaje("consultarPacientes");
+    System.out.println(respuesta);
+    String respuesta1=respuesta.substring(0, respuesta.length()-1);
+    System.out.println(respuesta1);
+    String[] expedientes=respuesta1.split("!\\?");
+%>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -32,12 +50,21 @@
                     <th>Fecha de Nacimiento</th>
                     <th>Acciones</th>
                 </tr>
-                <tr>
-                    <td>12345678901234567</td>
-                    <td>Juan Pérez</td>
-                    <td>01/01/1990</td>
-                    <td><button onclick="verExpediente('12345678901234567')">Ver</button></td>
-                </tr>
+                <%
+                                    if (expedientes != null) {
+                                        for (String a : expedientes) {
+                                            String[] expediente=a.split("!");
+                                %>
+                                <tr>
+                                    <td> <%= expediente[1] %></td>
+                                    <td> <%= expediente[2] %></td>
+                                    <td> <%= expediente[3] %></td>
+                                    <td> <%= expediente[4] %></td>
+                                    <td><button onclick="verExpediente('<%= expediente[1] %>')">Ver</button></td>
+                                </tr>
+
+                                <%}
+                                    }%>
                 <!-- Agrega más filas según sea necesario -->
             </table>
         </div>
@@ -45,7 +72,7 @@
             function verExpediente(curp) {
                 // Aquí puedes agregar la lógica para manejar el evento de "ver" el expediente
                 // Por ejemplo, redirigir a otra página con más detalles del expediente
-                alert("Ver expediente con CURP: " + curp);
+                window.location.href = "expedienteM.jsp?curp=" + curp;
             }
         </script>
     </body>

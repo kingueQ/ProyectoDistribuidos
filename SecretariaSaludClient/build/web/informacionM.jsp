@@ -4,7 +4,22 @@
     Author     : kingu
 --%>
 
+<%@page import="cliente.SocketCliente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    HttpSession objSesion = request.getSession(false);
+    String cedula = (String) objSesion.getAttribute("cedula");
+    if (cedula == null || cedula.isEmpty()) {
+        // Si el correo no está presente en la sesión, redirige a la página de inicio de sesión
+        response.sendRedirect("index.jsp");
+    }
+    objSesion.setAttribute("cedula", cedula);
+    String serverAddress = "localhost"; // Dirección IP del servidor
+    int serverPort = 12345; // Puerto del servidor
+    SocketCliente cliente = new SocketCliente(serverAddress, serverPort);
+    String respuesta = cliente.enviarMensaje("consultaMedico!" + cedula);
+    String[] medico = respuesta.split("!");
+%>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -27,16 +42,14 @@
             <h1>Información del Médico</h1>
             <form>
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" value="Nombre del Médico" disabled>
+                <input type="text" id="nombre" name="nombre" value="<%= medico[2] %>" disabled>
                 <button type="button" id="btnModificarNombre">Modificar</button><br><br>
                 <label for="cedula">Cédula:</label>
-                <input type="text" id="cedula" name="cedula" value="Número de Cédula" disabled><br><br>
+                <input type="text" id="cedula" name="cedula" value="<%= medico[1] %>" disabled><br><br>
                 <label for="especialidad">Especialidad:</label>
-                <input type="text" id="especialidad" name="especialidad" value="Especialidad del Médico" disabled><br><br>
-                <label for="correo">Correo electrónico:</label>
-                <input type="email" id="correo" name="correo" value="Correo electrónico del Médico" disabled><br><br>
+                <input type="text" id="especialidad" name="especialidad" value="<%= medico[4] %>" disabled><br><br>
                 <label for="contraseña">Contraseña:</label>
-                <input type="password" id="contraseña" name="contraseña" value="Contraseña del Médico" disabled>
+                <input type="password" id="contraseña" name="contraseña" value="<%= medico[3] %>" disabled>
                 <button type="button" id="btnModificarContraseña">Modificar</button><br><br>
             </form>
         </div>
