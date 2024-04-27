@@ -15,29 +15,28 @@ body {
     padding: 0;
 }
 
-#header {
-    background-color: #3498db;
-    color: #fff;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#header img {
-    max-width: 100px;
-}
-
-#header ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-#header ul li {
-    display: inline;
-    margin-left: 10px;
-}
+ #header {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #header img {
+            height: 50px;
+        }
+        #header ul {
+            list-style-type: none;
+            display: flex;
+        }
+        #header ul li {
+            margin: 0 10px;
+        }
+        #header ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
 
 #welcome-message {
     padding: 20px;
@@ -60,7 +59,7 @@ body {
 
 /* Estilos para el modal */
 .modal {
-    display: none; /* Por defecto, ocultamos el modal */
+    display: none;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -68,15 +67,18 @@ body {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro semitransparente */
+    background-color: rgba(0,0,0,0.4);
 }
 
 .modal-content {
-    background-color: #fefefe; /* Fondo blanco para el contenido */
-    margin: 10% auto; /* Centramos el modal verticalmente */
+    background-color: #fefefe;
+    margin: 10% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .close {
@@ -91,4 +93,42 @@ body {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+
 }

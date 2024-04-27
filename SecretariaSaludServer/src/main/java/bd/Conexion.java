@@ -17,7 +17,7 @@ public class Conexion {
     private String USERNAME="root";
     private String PASSWORD="Blaziquen_01";
     private String HOST="localhost";
-    private String PORT="3306";
+    private String PORT="1234";
     private String DATEBASE="secretariadesalud";
     private String CLASSNAME="com.mysql.jdbc.Driver";
     private String URL="jdbc:mysql://"+HOST+":"+PORT+"/"+DATEBASE;
