@@ -1,13 +1,4 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 24/04/2024, 12:15:22 PM
-    Author     : kingu
-*/
-
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -15,36 +6,57 @@ body {
     padding: 0;
 }
 
- #header {
-            background-color: #3498db;
-            color: #fff;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        #header img {
-            height: 50px;
-        }
-        #header ul {
-            list-style-type: none;
-            display: flex;
-        }
-        #header ul li {
-            margin: 0 10px;
-        }
-        #header ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-#welcome-message {
-    padding: 20px;
-    text-align: center;
+#header {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+#header img {
+    height: 50px;
+}
+
+#header ul {
+    list-style-type: none;
+    display: flex;
+}
+
+#header ul li {
+    margin: 0 10px;
+}
+
+#header ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Estilos para los mensajes de bienvenida */
+#welcome-message {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #3498db;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+#welcome-message h1 {
+    font-size: 36px;
+}
+
+#welcome-message p {
+    font-size: 18px;
+}
+
+/* Estilos para las características */
 #features {
     padding: 20px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #features h2 {
@@ -52,8 +64,8 @@ body {
 }
 
 #features ul {
-    list-style-type: decimal;
-    margin-left: 20px;
+    list-style-type: none;
+    margin: 0;
     padding: 0;
 }
 
@@ -130,5 +142,92 @@ input[type="password"] {
 
 .btn:hover {
     background-color: #0056b3;
+}
 
+/* Estilos específicos para la página expedientesM.jsp */
+#content {
+    padding: 20px;
+    text-align: center; /* Alinear el contenido al centro */
+}
+
+#content h1 {
+    color: #3498db; /* Color del encabezado principal */
+    font-size: 36px; /* Tamaño del encabezado principal */
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+
+#content p {
+    color: #333; /* Color del texto */
+    font-size: 18px; /* Tamaño del texto */
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+
+#content h2 {
+    color: #3498db; /* Color del encabezado secundario */
+    font-size: 24px; /* Tamaño del encabezado secundario */
+    margin-top: 30px; /* Espaciado superior */
+}
+
+#content ul {
+    list-style-type: none; /* Eliminar viñetas de la lista */
+    padding: 0;
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+
+#content ul li {
+    color: #333; /* Color del texto de la lista */
+    font-size: 16px; /* Tamaño del texto de la lista */
+    margin-bottom: 10px;
+}
+
+.contacto {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    padding: 20px; /* Aumentar el espacio de relleno */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.contacto h3 {
+    color: #3498db; /* Color del encabezado secundario */
+    margin-top: 0; /* Eliminar el margen superior */
+    margin-bottom: 10px; /* Espaciado inferior */
+}
+
+.contacto p {
+    color: #333; /* Color del texto */
+    margin-bottom: 5px; /* Espaciado inferior */
+}
+
+/* Estilos específicos para la tabla de expedientes */
+table {
+    width: 100%; /* Ancho completo de la tabla */
+    border-collapse: collapse; /* Colapsar bordes de la tabla */
+}
+
+th, td {
+    padding: 10px; /* Añadir espacio interno a las celdas */
+    border: 1px solid #ddd; /* Añadir borde a las celdas */
+}
+
+th {
+    background-color: #f2f2f2; /* Color de fondo para las celdas de encabezado */
+    color: #333; /* Color del texto en las celdas de encabezado */
+}
+
+tr:hover {
+    background-color: #f5f5f5; /* Cambiar color de fondo al pasar el ratón sobre una fila */
+}
+
+button {
+    background-color: #3498db; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    border: none; /* Eliminar borde del botón */
+    padding: 5px 10px; /* Ajustar espacio interno del botón */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar por encima */
+}
+
+button:hover {
+    background-color: #2980b9; /* Cambiar color de fondo al pasar el ratón sobre el botón */
 }

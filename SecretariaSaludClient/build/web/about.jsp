@@ -12,33 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acerca de nosotros - Expediente Clínico Electrónico</title>
     <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
-    <style>
-        #content {
-            padding: 20px;
-        }
-        #content h1 {
-            color: #333;
-        }
-        #content h2 {
-            color: #333;
-            margin-top: 30px;
-        }
-        #content ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        #content ul li {
-            margin-bottom: 10px;
-        }
-        .contacto {
-            margin-top: 20px;
-            border: 1px solid #ddd;
-            padding: 10px;
-        }
-        .contacto h3 {
-            margin-top: 0;
-        }
-    </style>
 </head>
 <body>
     <div id="header">
@@ -63,24 +36,24 @@
         </ul>
         <h2>Equipo de Desarrollo</h2>
         <ul>
-            <li>Nombre del Desarrollador 1 - Cargo</li>
-            <li>Nombre del Desarrollador 2 - Cargo</li>
-            <li>Nombre del Desarrollador 3 - Cargo</li>
+            <li>Abraham Eduardo Quintana García - Administrador de proyecto</li>
+            <li>Cristian Eduardo Arreola Valenzuela - Gerente de desarrollo</li>
+            <li>Alexa María Soto Esquer - Gerente de pruebas</li>
         </ul>
         <h2>Información de Contacto</h2>
         <div class="contacto">
-            <h3>Nombre del Desarrollador 1</h3>
-            <p>Correo electrónico: desarrollador1@example.com</p>
+            <h3>Abraham Eduardo Quintana García</h3>
+            <p>Correo electrónico: abraham.quintana233514@potros.itson.edu.mx</p>
+            <p>Teléfono: 6471266682</p>
+        </div>
+        <div class="contacto">
+            <h3>Cristian Eduardo Arreola Valenzuela</h3>
+            <p>Correo electrónico: cristian.arreola233140@potros.itson.edu.mx</p>
             <p>Teléfono: +1234567890</p>
         </div>
         <div class="contacto">
-            <h3>Nombre del Desarrollador 2</h3>
-            <p>Correo electrónico: desarrollador2@example.com</p>
-            <p>Teléfono: +1234567890</p>
-        </div>
-        <div class="contacto">
-            <h3>Nombre del Desarrollador 3</h3>
-            <p>Correo electrónico: desarrollador3@example.com</p>
+            <h3>Alexa María Soto Esquer</h3>
+            <p>Correo electrónico: alexa.soto236348@potros.itson.edu.mx</p>
             <p>Teléfono: +1234567890</p>
         </div>
     </div>

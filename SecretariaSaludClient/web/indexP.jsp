@@ -32,10 +32,19 @@
                 <li><a href="index.jsp">Cerrar Sesión</a></li>
             </ul>
         </div>
-        <div id="content">
-            <h1>Bienvenido al Expediente Clínico Electrónico</h1>
-            <p>El Expediente Clínico Electrónico es una herramienta que te permite gestionar la información médica de manera segura y eficiente.</p>
-        </div>
+        <section id="welcome-message">
+        <h1>Bienvenido al Expediente Clínico Electrónico</h1>
+        <p>El Expediente Clínico Electrónico es una herramienta que te permite gestionar la información médica de manera segura y eficiente.</p>
+    </section>
+
+    <section id="features">
+        <h2>Funcionalidades</h2>
+        <ul>
+            <li>Puedes visualizar los expedientes de tus pacientes.</li>
+            <li>Si eres paciente, puedes ver y gestionar tu propio expediente.</li>
+            <!-- Agrega más funcionalidades aquí -->
+        </ul>
+    </section>
     </body>
 </html>
 
