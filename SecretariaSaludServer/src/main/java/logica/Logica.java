@@ -13,6 +13,10 @@ import dominio.Medico;
 import dominio.Paciente;
 import java.sql.Date;
 import java.util.List;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
+import javax.crypto.SecretKey;
 
 /**
  *
@@ -159,12 +163,28 @@ public class Logica {
     public boolean autenticarMedico(String cedula, String pass) {
         return medicoDAO.autenticar(cedula, pass);
     }
-    
-    public boolean autenticar(String credencial, String pass){
-        if(credencial.length()==18){
+
+    public boolean autenticar(String credencial, String pass) {
+        if (credencial.length() == 18) {
             return this.autenticarPaciente(credencial, pass);
-        }else{
+        } else {
             return this.autenticarMedico(credencial, pass);
         }
     }
+
+    //Crea la clave secreta del token
+    private static final SecretKey SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+
+// Método para generar un token JWT
+    public static String generarToken(String sujeto) {
+        String token = Jwts.builder()
+                .setSubject(sujeto) //Utiliza la curp o cedula como el sujeto del token
+                .setIssuedAt(new java.util.Date()) // Fecha de emisión del token
+                .setExpiration(new java.util.Date(System.currentTimeMillis() + 86400000)) // Fecha de expiración del token (24 horas)
+                .signWith(SECRET_KEY) // Firma del token
+                .compact();
+
+        return token;
+    }
+
 }
