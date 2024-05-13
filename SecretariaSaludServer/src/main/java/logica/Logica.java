@@ -5,6 +5,7 @@
  */
 package logica;
 
+import cliente.SocketCliente;
 import dao.ExpedienteDAO;
 import dao.MedicoDAO;
 import dao.PacienteDAO;
@@ -34,10 +35,10 @@ public class Logica {
         medicoDAO = new MedicoDAO();
     }
 
-    public boolean insertarExpediente(String idPaciente, String medicosAcceso, String imagenes, String documentos, String textos) {
+    public boolean insertarExpediente(String idPaciente) {
 
-        Expediente expediente = new Expediente(imagenes, textos, documentos, Integer.parseInt(idPaciente));
-        expediente.setMedicos(medicosAcceso);
+        Expediente expediente = new Expediente("", "", "", Integer.parseInt(idPaciente));
+        expediente.setMedicos("");
         expediente.setAcceso(false);
         return expedienteDAO.agregarExpediente(expediente);
     }
@@ -185,6 +186,21 @@ public class Logica {
                 .compact();
 
         return token;
+    }
+    
+    public boolean enviar(String nombre, String mensaje){
+        SocketCliente cliente = new SocketCliente("localhost", 1234);
+        String result = cliente.enviarMensaje("enviar!" + nombre + "!" + mensaje);
+        if(result.equalsIgnoreCase("true")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public String recibir(String nombre){
+        SocketCliente cliente = new SocketCliente("localhost", 1234);
+        return cliente.enviarMensaje("recibir!" + nombre);
     }
 
 }

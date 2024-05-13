@@ -60,6 +60,11 @@ public class RegistroPacientesServlet extends HttpServlet {
             System.out.println("Respuesta del servidor: " + respuesta);
             
             if (respuesta.equals("true")) {
+                socketCliente = new SocketCliente(serverAddress, serverPort);
+                respuesta = socketCliente.enviarMensaje("consultarPaciente!" + curp);
+                String[] partes = respuesta.split("!");
+                socketCliente = new SocketCliente(serverAddress, serverPort);
+                respuesta = socketCliente.enviarMensaje("insertarExpediente!" + partes[0]);
                 // Si la respuesta es true, redirigir a indexM.jsp
                 response.sendRedirect("indexP.jsp");
             } else {

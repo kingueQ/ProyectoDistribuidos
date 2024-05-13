@@ -231,3 +231,7 @@ button {
 button:hover {
     background-color: #2980b9; /* Cambiar color de fondo al pasar el ratón sobre el botón */
 }
+
+#notification-section {
+    display: none; /* Oculta la sección de notificaciones por defecto */
+}

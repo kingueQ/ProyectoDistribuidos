@@ -46,7 +46,7 @@ public class SocketServer {
                 switch (command) {
                     case "insertarExpediente":
                         // Llama al método para insertar expediente en ExpedienteDAO
-                        result = logica.insertarExpediente(parts[1], parts[2], parts[3], parts[4], parts[5]);
+                        result = logica.insertarExpediente(parts[1]);
                         // Enviar resultado al cliente
                         output.println(result ? "true" : "false");
                         break;
@@ -139,6 +139,18 @@ public class SocketServer {
                         String expedienteResult = logica.consultarExpediente(parts[1]);
                         // Enviar resultado al cliente
                         output.println(expedienteResult);
+                        break;
+                    case "enviar":
+                        // Llama al método para consultar medicos en MedicoDAO
+                        result = logica.enviar(parts[1], parts[2]);
+                        // Enviar resultado al cliente
+                        output.println(result ? "true" : "false");
+                        break;
+                    case "recibir":
+                        // Llama al método para consultar medicos en MedicoDAO
+                        String mensajes = logica.recibir(parts[1]);
+                        // Enviar resultado al cliente
+                        output.println(mensajes);
                         break;
                     default:
                         output.println("Comando no reconocido: " + command);

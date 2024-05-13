@@ -40,7 +40,7 @@ public class ExpedienteDAO {
     // Método para actualizar un expediente existente
     public boolean actualizarExpediente(Expediente expediente) {
         try {
-            String query = "UPDATE expedientes SET imagenes=?, textos=?, documentos=?, medicosAcceso=?, tipoAcceso=? WHERE id=?";
+            String query = "UPDATE expedientes SET imagenes=?, textos=?, documentos=?, medicosAcceso=?, acceso=? WHERE id=?";
             PreparedStatement statement = conexion.prepareStatement(query);
             statement.setString(1, expediente.getImagenes());
             statement.setString(2, expediente.getTextos());
