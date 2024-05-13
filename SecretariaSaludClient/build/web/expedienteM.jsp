@@ -64,10 +64,12 @@
             <h2>Imágenes</h2>
             <table>
                 <% String[] imagenes = expediente[1].split("-");
-                    if (imagenes != null) {
-                        for (String a : imagenes) {%>
+                    if (imagenes != null && imagenes.length>1) {
+                        for (int i=1;i<imagenes.length;i++) {
+                String a = imagenes[i];
+                %>
                 <tr>
-                    <td> <%= a%></td>
+                    <td> <img src="<%= a%>" alt="" width="500" height="500"/></td>
                 </tr>
                 <% }
                     }%>
@@ -83,16 +85,18 @@
             <h2>Documentos PDF</h2>
             <table>
                 <% String[] documentos = expediente[2].split("-");
-                    if (documentos != null) {
-                        for (String a : documentos) {%>
+                    if (documentos != null && documentos.length>1) {
+                        for (int i=1;i<documentos.length;i++) {
+                String a = documentos[i];
+                %>
                 <tr>
-                    <td> <%= a%></td>
+                    <td> <a href="<%= a%>" target="_blank">Abrir PDF</a></td>
                 </tr>
                 <% }
                     }%>
             </table>
             <form action="SubirPdfServlet" method="post" enctype="multipart/form-data">
-                <input type="file" name="documento" accept=".pdf">
+                <input type="file" name="document" accept=".pdf">
                 <input type="hidden" name="cedula" value="<%= cedula%>">
                 <input type="hidden" name="curp" value="<%= curp%>">
                 <button type="submit">Subir Documento</button>
@@ -100,16 +104,18 @@
             <hr>
 
             <h2>Textos</h2>
-            <ul>
+            <table>
                 <% String[] textos = expediente[3].split("-");
-                    if (textos != null) {
-                        for (String a : textos) {%>
+                    if (textos != null && textos.length>1) {
+                        for (int i=1;i<textos.length;i++) {
+                String a = textos[i];
+                %>
                 <tr>
-                    <td> <%= a%></td>
+                    <td> <%= a%> </td>
                 </tr>
                 <% }
                     }%>
-            </ul>
+            </table>
             <form action="SubirTextoServlet" method="post" onsubmit="return validarTexto()">
                 <textarea id="texto" name="texto" rows="4" cols="50"></textarea><br>
                 <input type="hidden" name="cedula" value="<%= cedula%>">

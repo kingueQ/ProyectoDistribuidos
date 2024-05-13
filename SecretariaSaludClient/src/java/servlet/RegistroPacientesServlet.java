@@ -61,7 +61,7 @@ public class RegistroPacientesServlet extends HttpServlet {
             
             if (respuesta.equals("true")) {
                 socketCliente = new SocketCliente(serverAddress, serverPort);
-                respuesta = socketCliente.enviarMensaje("consultarPaciente!" + curp);
+                respuesta = socketCliente.enviarMensaje("consultaPaciente!" + curp);
                 String[] partes = respuesta.split("!");
                 socketCliente = new SocketCliente(serverAddress, serverPort);
                 respuesta = socketCliente.enviarMensaje("insertarExpediente!" + partes[0]);

@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Paths;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,8 +23,12 @@ import javax.servlet.http.Part;
  *
  * @author kingu
  */
-@WebServlet(name = "SubirPdfServlet", urlPatterns = {"/SubirPdfServlet"})
+@WebServlet("/SubirPdfServlet")
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+        maxFileSize = 1024 * 1024 * 10, // 10MB
+        maxRequestSize = 1024 * 1024 * 50)   // 50MB
 public class SubirPdfServlet extends HttpServlet {
+    
 private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,7 +36,7 @@ private static final long serialVersionUID = 1L;
         String cedula = request.getParameter("cedula");
         String curp = request.getParameter("curp");
 // Obtiene la parte del archivo de la solicitud
-        Part filePart = request.getPart("documento");
+        Part filePart = request.getPart("document");
 
         // Obtiene el nombre del archivo
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();

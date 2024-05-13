@@ -37,8 +37,8 @@ public class Logica {
 
     public boolean insertarExpediente(String idPaciente) {
 
-        Expediente expediente = new Expediente("", "", "", Integer.parseInt(idPaciente));
-        expediente.setMedicos("");
+        Expediente expediente = new Expediente(" ", " ", " ", Integer.parseInt(idPaciente));
+        expediente.setMedicos(" ");
         expediente.setAcceso(false);
         return expedienteDAO.agregarExpediente(expediente);
     }

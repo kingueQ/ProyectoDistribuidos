@@ -29,7 +29,7 @@ public class AutenticacionServlet extends HttpServlet {
             String respuesta = socketCliente.enviarMensaje("autenticar!" + cedulaCurp + "!" + contrasena);
             System.out.println("Respuesta del servidor: " + respuesta);
 
-            if (respuesta.equals("true")) {
+            if (respuesta.equalsIgnoreCase("true")) {
                 // Si la respuesta es true, redirigir a indexM.jsp
                 if(cedulaCurp.length()==18){
                     HttpSession objSesion = request.getSession(true);

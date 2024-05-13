@@ -19,6 +19,9 @@
     int serverPort = 12345; // Puerto del servidor
     SocketCliente cliente = new SocketCliente(serverAddress, serverPort);
     String respuesta = cliente.enviarMensaje("recibir!" + curp);
+    if(respuesta==null){
+        respuesta="";
+    }
     String[] mensajes = respuesta.split("-");
 %>
 <!DOCTYPE html>

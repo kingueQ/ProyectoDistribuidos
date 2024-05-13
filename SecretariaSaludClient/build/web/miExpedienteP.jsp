@@ -54,50 +54,47 @@
 
             <h2>Imágenes</h2>
             <table>
-                <%
-                    String[] imagenes = expediente[1].split("-");
-                                    if (imagenes != null) {
-                                        for (String a : imagenes) {
-                                %>
-                                <tr>
-                                    <td> <%= a %></td>
-                                </tr>
-
-                                <%}
-                                    }%>
+                <% String[] imagenes = expediente[1].split("-");
+                    if (imagenes != null && imagenes.length>1) {
+                        for (int i=1;i<imagenes.length;i++) {
+                String a = imagenes[i];
+                %>
+                <tr>
+                    <td> <img src="<%= a%>" alt="" width="500" height="500"/></td>
+                </tr>
+                <% }
+                    }%>
             </table>
             <hr>
 
             <h2>Documentos PDF</h2>
             <table>
-                <%
-                    String[] documentos = expediente[2].split("-");
-                                    if (documentos != null) {
-                                        for (String a : documentos) {
-                                %>
-                                <tr>
-                                    <td> <%= a %></td>
-                                </tr>
-
-                                <%}
-                                    }%>
+                <% String[] documentos = expediente[2].split("-");
+                    if (documentos != null && documentos.length>1) {
+                        for (int i=1;i<documentos.length;i++) {
+                String a = documentos[i];
+                %>
+                <tr>
+                    <td> <a href="<%= a%>" target="_blank">Abrir PDF</a></td>
+                </tr>
+                <% }
+                    }%>
             </table>
             <hr>
 
             <h2>Textos</h2>
-            <ul>
-                <%
-                    String[] textos = expediente[3].split("-");
-                                    if (textos != null) {
-                                        for (String a : textos) {
-                                %>
-                                <tr>
-                                    <td> <%= a %></td>
-                                </tr>
-
-                                <%}
-                                    }%>
-            </ul>
+            <table>
+                <% String[] textos = expediente[3].split("-");
+                    if (textos != null && textos.length>1) {
+                        for (int i=1;i<textos.length;i++) {
+                String a = textos[i];
+                %>
+                <tr>
+                    <td> <%= a%> </td>
+                </tr>
+                <% }
+                    }%>
+            </table>
             <hr>
 
             <h2>Acceso del Expediente</h2>
