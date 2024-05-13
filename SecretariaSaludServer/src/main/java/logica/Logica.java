@@ -202,5 +202,31 @@ public class Logica {
         SocketCliente cliente = new SocketCliente("localhost", 1234);
         return cliente.enviarMensaje("recibir!" + nombre);
     }
+    
+    public boolean cambiarAcceso(String curp){
+        Paciente paciente = pacienteDAO.consultarPaciente(curp);
+        Expediente expediente = expedienteDAO.consultarExpediente(paciente.getId());
+        if (expediente != null) {
+            boolean acceso;
+            if(expediente.getAcceso()){
+                acceso=false;
+            }else{
+                acceso=true;
+            }
+            return expedienteDAO.cambiarAcceso(paciente.getId(), acceso);
+        } else {
+            return false;
+        }
+    }
+    
+    public boolean modificarMedicos(String curp, String medicos){
+        Paciente paciente = pacienteDAO.consultarPaciente(curp);
+        Expediente expediente = expedienteDAO.consultarExpediente(paciente.getId());
+        if (expediente != null) {
+            return expedienteDAO.modificarMedicos(paciente.getId(), medicos);
+        } else {
+            return false;
+        }
+    }
 
 }

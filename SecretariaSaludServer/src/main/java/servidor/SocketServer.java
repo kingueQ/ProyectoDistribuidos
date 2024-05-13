@@ -152,6 +152,20 @@ public class SocketServer {
                         // Enviar resultado al cliente
                         output.println(mensajes);
                         break;
+                    case "cambiarAcceso":
+                        // Llama al método para consultar medicos en MedicoDAO
+                        result = logica.cambiarAcceso(parts[1]);
+                        // Enviar resultado al cliente
+                        System.out.println(result);
+                        output.println(result ? "true" : "false");
+                        break;
+                    case "modificarMedicos":
+                        // Llama al método para consultar medicos en MedicoDAO
+                        result = logica.modificarMedicos(parts[1], parts[2]);
+                        // Enviar resultado al cliente
+                        System.out.println(result);
+                        output.println(result ? "true" : "false");
+                        break;
                     default:
                         output.println("Comando no reconocido: " + command);
                         break;

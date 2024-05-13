@@ -23,6 +23,12 @@
     respuesta = cliente.enviarMensaje("consultaPaciente!" + curp);
     System.out.println(respuesta);
     String[] paciente = respuesta.split("!");
+    String acceso;
+    if(expediente[5].equalsIgnoreCase("true")){
+        acceso="publico";
+    }else{
+        acceso="privado";
+    }
 %>
 <!DOCTYPE html>
 <html lang="es">
@@ -47,17 +53,17 @@
             <h1>Mi Expediente</h1>
 
             <h2>Datos del Expediente</h2>
-            <p>Nombre: <%= paciente[2] %></p>
-            <p>CURP: <%= paciente[1] %></p>
-            <p>Fecha de Nacimiento: <%= paciente[3] %></p>
+            <p>Nombre: <%= paciente[2]%></p>
+            <p>CURP: <%= paciente[1]%></p>
+            <p>Fecha de Nacimiento: <%= paciente[3]%></p>
             <hr>
 
             <h2>Imágenes</h2>
             <table>
                 <% String[] imagenes = expediente[1].split("-");
-                    if (imagenes != null && imagenes.length>1) {
-                        for (int i=1;i<imagenes.length;i++) {
-                String a = imagenes[i];
+                    if (imagenes != null && imagenes.length > 1) {
+                        for (int i = 1; i < imagenes.length; i++) {
+                            String a = imagenes[i];
                 %>
                 <tr>
                     <td> <img src="<%= a%>" alt="" width="500" height="500"/></td>
@@ -70,9 +76,9 @@
             <h2>Documentos PDF</h2>
             <table>
                 <% String[] documentos = expediente[2].split("-");
-                    if (documentos != null && documentos.length>1) {
-                        for (int i=1;i<documentos.length;i++) {
-                String a = documentos[i];
+                    if (documentos != null && documentos.length > 1) {
+                        for (int i = 1; i < documentos.length; i++) {
+                            String a = documentos[i];
                 %>
                 <tr>
                     <td> <a href="<%= a%>" target="_blank">Abrir PDF</a></td>
@@ -85,9 +91,9 @@
             <h2>Textos</h2>
             <table>
                 <% String[] textos = expediente[3].split("-");
-                    if (textos != null && textos.length>1) {
-                        for (int i=1;i<textos.length;i++) {
-                String a = textos[i];
+                    if (textos != null && textos.length > 1) {
+                        for (int i = 1; i < textos.length; i++) {
+                            String a = textos[i];
                 %>
                 <tr>
                     <td> <%= a%> </td>
@@ -98,26 +104,41 @@
             <hr>
 
             <h2>Acceso del Expediente</h2>
-            <p>Tipo de Acceso: <%= expediente[4] %></p>
-            <button>Cambiar Acceso</button>
+            <p>Tipo de Acceso: <%= acceso %></p>
+            <form action="CambiarAccesoServlet" method="post">
+                <input type="hidden" name="curp" value="<%= curp%>">
+                <button type="submit">Cambiar Acceso</button>
+            </form>
             <hr>
 
             <h2>Médicos con Acceso</h2>
             <table>
                 <%
-                    String[] medicos = expediente[5].split("-");
-                                    if (medicos != null) {
-                                        for (String a : medicos) {
-                                %>
-                                <tr>
-                                    <td> <%= a %></td>
-                                </tr>
-
-                                <%}
-                                    }%>
+                    String[] medicos = expediente[4].split("-");
+                    if (medicos != null) {
+                        for (String medico : medicos) {
+                %>
+                <tr>
+                    <td><%= medico%></td>
+                    <td>
+                        <form action="ModificarMedicosServlet" method="post">
+                            <input type="hidden" name="operacion" value="eliminar">
+                            <input type="hidden" name="curp" value="<%= curp%>">
+                            <input type="hidden" name="cedula" value="<%= medico%>">
+                            <button type="submit" name="action" value="eliminar">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                <%}
+        }%>
             </table>
-            <button>Agregar Médico</button>
-            <button>Quitar Médico</button>
+            <form action="ModificarMedicosServlet" method="post">
+                <label for="cedula_medico">Cédula del Médico:</label>
+                <input type="hidden" name="operacion" value="agregar">
+                <input type="hidden" name="curp" value="<%= curp%>">
+                <input type="text" id="cedula_medico" name="cedula">
+                <button type="submit" name="action" value="agregar">Agregar Médico</button>
+            </form>
         </div>
     </body>
 </html>

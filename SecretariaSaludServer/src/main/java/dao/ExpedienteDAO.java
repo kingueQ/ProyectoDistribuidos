@@ -87,7 +87,7 @@ public class ExpedienteDAO {
                 expediente.setTextos(result.getString("textos"));
                 expediente.setDocumentos(result.getString("documentos"));
                 expediente.setMedicos(result.getString("medicosAcceso"));
-                expediente.setAcceso(result.getBoolean("tipoAcceso"));
+                expediente.setAcceso(result.getBoolean("acceso"));
                 expedientes.add(expediente);
             }
             statement.close();
@@ -115,7 +115,7 @@ public class ExpedienteDAO {
                 expediente.setTextos(result.getString("textos"));
                 expediente.setDocumentos(result.getString("documentos"));
                 expediente.setMedicos(result.getString("medicosAcceso"));
-                expediente.setAcceso(result.getBoolean("tipoAcceso"));
+                expediente.setAcceso(result.getBoolean("acceso"));
             }
 
             statement.close();
@@ -124,5 +124,35 @@ public class ExpedienteDAO {
             System.err.println("Error al consultar expediente: " + e.getMessage());
         }
         return expediente;
+    }
+    
+    public boolean cambiarAcceso(int id, boolean acceso){
+        try {
+            String query = "UPDATE expedientes SET acceso=? WHERE id=?";
+            PreparedStatement statement = conexion.prepareStatement(query);
+            statement.setBoolean(1, acceso);
+            statement.setInt(2, id);
+            statement.executeUpdate();
+            statement.close();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("Error al actualizar expediente: " + e.getMessage());
+        }
+        return false;
+    }
+    
+    public boolean modificarMedicos(int id, String medicos){
+        try {
+            String query = "UPDATE expedientes SET medicosAcceso=? WHERE id=?";
+            PreparedStatement statement = conexion.prepareStatement(query);
+            statement.setString(1, medicos);
+            statement.setInt(2, id);
+            statement.executeUpdate();
+            statement.close();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("Error al actualizar expediente: " + e.getMessage());
+        }
+        return false;
     }
 }
