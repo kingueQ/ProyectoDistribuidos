@@ -165,13 +165,24 @@ public class Logica {
         return medicoDAO.autenticar(cedula, pass);
     }
 
-    public boolean autenticar(String credencial, String pass) {
-        if (credencial.length() == 18) {
-            return this.autenticarPaciente(credencial, pass);
-        } else {
-            return this.autenticarMedico(credencial, pass);
+   public boolean autenticar(String credencial, String pass) {
+    if (credencial.length() == 18) {
+        boolean autenticacionPaciente = this.autenticarPaciente(credencial, pass);
+        if (autenticacionPaciente) {
+            String token = generarToken(credencial);
+            System.out.println("Token generado para paciente " + credencial + ": " + token);
+            return true;
+        }
+    } else {
+        boolean autenticacionMedico = this.autenticarMedico(credencial, pass);
+        if (autenticacionMedico) {
+            String token = generarToken(credencial);
+            System.out.println("Token generado para médico " + credencial + ": " + token);
+            return true;
         }
     }
+    return false;
+}
 
     //Crea la clave secreta del token
     private static final SecretKey SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
