@@ -19,8 +19,8 @@
     int serverPort = 12345; // Puerto del servidor
     SocketCliente cliente = new SocketCliente(serverAddress, serverPort);
     String respuesta = cliente.enviarMensaje("recibir!" + curp);
-    if(respuesta==null){
-        respuesta="";
+    if (respuesta == null) {
+        respuesta = "";
     }
     String[] mensajes = respuesta.split("-");
 %>
@@ -35,20 +35,18 @@
     <body>
         <div id="header">
             <img src="img/logo.png" alt="Logo de la aplicación">
-            <ul>
+            <ul class="navbar">
                 <li><a href="indexP.jsp">Inicio</a></li>
                 <li><a href="miExpedienteP.jsp">Mi Expediente</a></li>
                 <li><a href="informacionP.jsp">Ver Información</a></li>
-                <li id="notification-section" class="dropdown">
-                    <a href="javascript:void(0)" class="dropbtn">Notificaciones</a>
-                    <div class="dropdown-content">
-                        <ul id="notification-list">
-                            <% for (String mensaje : mensajes) {%>
-                            <li><%= mensaje%></li>
-                                <% }%>
-                        </ul>
-                    </div>
-                </li>
+                <li><a href="informacionP.jsp">Ver Información</a></li>
+                <label for="notificaciones-select">Notificaciones:</label>
+                <select id="notificaciones-select">
+                    <option value="">Selecciona una notificación</option>
+                    <% for (String mensaje : mensajes) {%>
+                    <option value="<%= mensaje%>"><%= mensaje%></option>
+                    <% }%>
+                </select>
                 <li><a href="index.jsp">Cerrar Sesión</a></li>
             </ul>
         </div>
@@ -65,7 +63,6 @@
                 <!-- Agrega más funcionalidades aquí -->
             </ul>
         </section>
-        
     </body>
 </html>
 

@@ -150,6 +150,7 @@ public class SocketServer {
                         // Llama al método para consultar medicos en MedicoDAO
                         String mensajes = logica.recibir(parts[1]);
                         // Enviar resultado al cliente
+                        System.out.println("Respuesta: " + mensajes);
                         output.println(mensajes);
                         break;
                     case "cambiarAcceso":
