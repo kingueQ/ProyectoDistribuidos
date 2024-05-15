@@ -297,3 +297,39 @@ button:hover {
 .toggle-checkbox:checked + .menu {
     display: block;
 }
+
+#notificaciones-select {
+    display: inline-block;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    margin-left: 10px;
+}
+#notificaciones-select option {
+    padding: 10px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+}
+
+.navbar li {
+    margin-right: 20px;
+}
+
+.navbar li a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.navbar li a:hover {
+    background-color: #ddd;
+}

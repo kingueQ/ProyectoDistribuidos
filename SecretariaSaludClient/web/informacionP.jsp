@@ -9,16 +9,19 @@
 <%
     HttpSession objSesion = request.getSession(false);
     String curp = (String) objSesion.getAttribute("curp");
+    String msgs = (String) objSesion.getAttribute("mensajes");
     if (curp == null || curp.isEmpty()) {
         // Si el correo no está presente en la sesión, redirige a la página de inicio de sesión
         response.sendRedirect("index.jsp");
     }
     objSesion.setAttribute("curp", curp);
+    objSesion.setAttribute("mensajes", msgs);
     String serverAddress = "localhost"; // Dirección IP del servidor
     int serverPort = 12345; // Puerto del servidor
     SocketCliente cliente = new SocketCliente(serverAddress, serverPort);
     String respuesta = cliente.enviarMensaje("consultaPaciente!" + curp);
     String[] paciente = respuesta.split("!");
+    String[] mensajes = msgs.split("-");
 %>
 <!DOCTYPE html>
 <html lang="es">
@@ -36,6 +39,12 @@
                 <li><a href="indexP.jsp">Inicio</a></li>
                 <li><a href="miExpedienteP.jsp">Mi Expediente</a></li>
                 <li><a href="informacionP.jsp">Ver Información</a></li>
+                <select id="notificaciones-select">
+                    <option value="">Mensajes</option>
+                    <% for (String mensaje : mensajes) {%>
+                    <option value="<%= mensaje%>"><%= mensaje%></option>
+                    <% }%>
+                </select>
                 <li><a href="index.jsp">Cerrar Sesión</a></li>
             </ul>
         </div>
@@ -43,16 +52,16 @@
             <h1>Información del Paciente</h1>
             <form>
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" value="<%= paciente[2] %>" disabled>
+                <input type="text" id="nombre" name="nombre" value="<%= paciente[2]%>" disabled>
                 <button type="button" id="btnModificarNombre">Modificar</button><br><br>
                 <label for="curp">CURP:</label>
-                <input type="text" id="curp" name="curp" value="<%= paciente[1] %>" disabled><br><br>
+                <input type="text" id="curp" name="curp" value="<%= paciente[1]%>" disabled><br><br>
                 <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-                <input type="text" id="fechaNacimiento" name="fechaNacimiento" value="<%= paciente[3] %>" disabled><br><br>
+                <input type="text" id="fechaNacimiento" name="fechaNacimiento" value="<%= paciente[3]%>" disabled><br><br>
                 <label for="tutor">Tutor:</label>
-                <input type="text" id="tutor" name="tutor" value="<%= paciente[4] %>" disabled><br><br>
+                <input type="text" id="tutor" name="tutor" value="<%= paciente[4]%>" disabled><br><br>
                 <label for="password">Password:</label>
-                <input type="password" id="contrasena" name="contrasena" value="<%= paciente[5] %>" disabled>
+                <input type="password" id="contrasena" name="contrasena" value="<%= paciente[5]%>" disabled>
                 <button type="button" id="btnModificarContraseña">Modificar</button><br><br>
             </form>
         </div>

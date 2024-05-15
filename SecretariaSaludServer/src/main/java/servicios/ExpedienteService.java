@@ -39,7 +39,7 @@ public class ExpedienteService implements IExpedienteService {
 
     @Override
     public boolean actualizarExpediente(Expediente expediente) {
-        String query = "UPDATE expedientes SET imagenes=?, textos=?, documentos=?, medicosAcceso=?, acceso=? WHERE id=?";
+        String query = "UPDATE expedientes SET imagenes=?, textos=?, documentos=?, medicosAcceso=?, acceso=? WHERE idPaciente=?";
         try (PreparedStatement statement = conexion.prepareStatement(query)) {
             statement.setString(1, expediente.getImagenes());
             statement.setString(2, expediente.getTextos());
@@ -57,7 +57,7 @@ public class ExpedienteService implements IExpedienteService {
 
     @Override
     public boolean eliminarExpediente(int id) {
-        String query = "DELETE FROM expedientes WHERE id=?";
+        String query = "DELETE FROM expedientes WHERE idPaciente=?";
         try (PreparedStatement statement = conexion.prepareStatement(query)) {
             statement.setInt(1, id);
             statement.executeUpdate();
@@ -117,7 +117,7 @@ public class ExpedienteService implements IExpedienteService {
 
     @Override
     public boolean cambiarAcceso(int id, boolean acceso) {
-        String query = "UPDATE expedientes SET acceso=? WHERE id=?";
+        String query = "UPDATE expedientes SET acceso=? WHERE idPaciente=?";
         try (PreparedStatement statement = conexion.prepareStatement(query)) {
             statement.setBoolean(1, acceso);
             statement.setInt(2, id);
@@ -131,7 +131,7 @@ public class ExpedienteService implements IExpedienteService {
 
     @Override
     public boolean modificarMedicos(int id, String medicos) {
-        String query = "UPDATE expedientes SET medicosAcceso=? WHERE id=?";
+        String query = "UPDATE expedientes SET medicosAcceso=? WHERE idPaciente=?";
         try (PreparedStatement statement = conexion.prepareStatement(query)) {
             statement.setString(1, medicos);
             statement.setInt(2, id);
