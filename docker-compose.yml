@@ -1,0 +1,29 @@
+services:
+  servidor-java:
+    build:
+      context: ./SecretariaSaludServer
+    ports:
+      - "8090:8090"
+    depends_on:
+      - base-de-datos
+
+  servidor-web:
+    build:
+      context: ./SecretariaSaludClient
+    ports:
+      - "80:80"
+    depends_on:
+      - base-de-datos
+
+  base-de-datos:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: AlexaSoto1
+      MYSQL_DATABASE: secretariasalud
+      MYSQL_USER: root
+      MYSQL_PASSWORD: AlexaSoto1
+
+  servidor-rabbitmq:
+    image: rabbitmq:latest
+    ports:
+      - "5672:5672"
