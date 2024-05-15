@@ -65,35 +65,7 @@
                 <!-- Agrega más funcionalidades aquí -->
             </ul>
         </section>
-        <script>
-            const notificationList = document.getElementById('notification-list');
-            const notificationSection = document.getElementById('notification-section');
-
-// Función para mostrar u ocultar la sección de notificaciones según el arreglo de mensajes
-            function toggleNotificationSection(messages) {
-                if (messages.length > 0) {
-                    notificationSection.style.display = 'block'; // Muestra la sección de notificaciones
-                    // Limpia los mensajes existentes
-                    notificationList.innerHTML = '';
-                    // Agrega los nuevos mensajes
-                    messages.forEach(message => {
-                        const li = document.createElement('li');
-                        li.textContent = message;
-                        notificationList.appendChild(li);
-                    });
-                } else {
-                    notificationSection.style.display = 'none'; // Oculta la sección de notificaciones
-                }
-            }
-
-// Llamada a la función toggleNotificationSection con el arreglo de mensajes obtenidos del servidor
-            fetch('obtenerMensajes') // La URL de la solicitud depende de tu configuración del servidor
-                    .then(response => response.json())
-                    .then(data => {
-                        toggleNotificationSection(data); // Muestra u oculta la sección de notificaciones según el arreglo de mensajes
-                    })
-                    .catch(error => console.error('Error al obtener mensajes:', error));
-        </script>
+        
     </body>
 </html>
 
