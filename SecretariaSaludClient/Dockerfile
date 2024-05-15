@@ -8,7 +8,7 @@ RUN rm -rf /usr/local/tomcat/webapps/*
 COPY SecretariaSaludClient.war /usr/local/tomcat/webapps/
 
 # Expone el puerto en el que Tomcat está ejecutando tu aplicación
-EXPOSE 8090
+EXPOSE 8080
 
 # Comando de inicio para iniciar Tomcat cuando se ejecute el contenedor
 CMD ["catalina.sh", "run"]
