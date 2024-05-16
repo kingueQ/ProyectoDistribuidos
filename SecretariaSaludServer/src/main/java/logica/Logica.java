@@ -13,11 +13,11 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
+//import io.jsonwebtoken.Jwts;
+//import io.jsonwebtoken.SignatureAlgorithm;
+//import io.jsonwebtoken.security.Keys;
 import java.sql.Date;
-import javax.crypto.SecretKey;
+//import javax.crypto.SecretKey;
 
 public class Logica implements ILogica{
 
@@ -27,7 +27,7 @@ public class Logica implements ILogica{
     private final IAuthService authService;
     private final IConexion conexion;
     private static final Logger LOGGER = Logger.getLogger(Logica.class.getName());
-    private static final SecretKey SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+//    private static final SecretKey SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
     public Logica() {
         conexion = new Conexion();
@@ -203,29 +203,29 @@ public class Logica implements ILogica{
     if (credencial.length() == 18) {
         boolean autenticacionPaciente = this.autenticarPaciente(credencial, pass);
         if (autenticacionPaciente) {
-            String token = generarToken(credencial);
-            System.out.println("Token generado para paciente " + credencial + ": " + token);
+//            String token = generarToken(credencial);
+//            System.out.println("Token generado para paciente " + credencial + ": " + token);
             return true;
         }
     } else {
         boolean autenticacionMedico = this.autenticarMedico(credencial, pass);
         if (autenticacionMedico) {
-            String token = generarToken(credencial);
-            System.out.println("Token generado para médico " + credencial + ": " + token);
+//            String token = generarToken(credencial);
+//            System.out.println("Token generado para médico " + credencial + ": " + token);
             return true;
         }
     }
     return false;
 }
 
-    public static String generarToken(String sujeto) {
-        return Jwts.builder()
-                .setSubject(sujeto)
-                .setIssuedAt(new java.util.Date())
-                .setExpiration(new java.util.Date(System.currentTimeMillis() + 86400000))
-                .signWith(SECRET_KEY)
-                .compact();
-    }
+//    public static String generarToken(String sujeto) {
+//        return Jwts.builder()
+//                .setSubject(sujeto)
+//                .setIssuedAt(new java.util.Date())
+//                .setExpiration(new java.util.Date(System.currentTimeMillis() + 86400000))
+//                .signWith(SECRET_KEY)
+//                .compact();
+//    }
     
     @Override
     public boolean enviar(String nombre, String mensaje) {

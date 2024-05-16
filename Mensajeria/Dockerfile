@@ -1,12 +1,37 @@
-# Usa una imagen base de RabbitMQ
-FROM rabbitmq:latest
+# Usa una imagen base de Maven para construir el proyecto
+FROM maven:3.8.4-openjdk-11 AS build
 
-# Exponer el puerto predeterminado de RabbitMQ (5672)
-EXPOSE 5672
+# Establece el directorio de trabajo dentro del contenedor
+WORKDIR /app
 
-# Opcional: si necesitas configurar plugins o usuarios en RabbitMQ, puedes hacerlo aquí
-# COPY rabbitmq.conf /etc/rabbitmq/
-# COPY rabbitmq-plugins /etc/rabbitmq/
+# Copia el archivo pom.xml para descargar las dependencias
+COPY pom.xml .
 
-# Comando de inicio para iniciar RabbitMQ cuando se ejecute el contenedor
-CMD ["rabbitmq-server"]
+# Descarga las dependencias del proyecto
+RUN mvn dependency:go-offline
+
+# Copia todo el código fuente al directorio de trabajo
+COPY src ./src
+
+# Compila la aplicación
+RUN mvn package -DskipTests
+
+# Usa una imagen base de OpenJDK para ejecutar la aplicación
+FROM openjdk:11-jre-slim
+
+# Establece el directorio de trabajo dentro del contenedor
+WORKDIR /app
+
+# Copia el archivo JAR de la aplicación construida en la etapa anterior
+COPY --from=build /app/target/Mensajeria-1.0-SNAPSHOT.jar .
+
+# Instala RabbitMQ
+RUN apt-get update && \
+    apt-get install -y rabbitmq-server && \
+    apt-get clean
+
+# Expone el puerto en el que tu aplicación escucha (ajústalo según tu aplicación)
+EXPOSE 8080
+
+# Comando de inicio para ejecutar tu aplicación cuando se inicie el contenedor
+CMD ["java", "-jar", "Mensajeria-1.0-SNAPSHOT.jar"]
