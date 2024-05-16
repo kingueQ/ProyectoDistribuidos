@@ -2,28 +2,37 @@ version: '3.8'
 
 services:
   mysql:
-    build:
-      context: ./BaseDatos
+    image: mysql:5.7
     ports:
       - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./BaseDatos/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: Blaziquen_01
+      MYSQL_DATABASE: secretariadesalud
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
   mensajeria:
     build:
       context: ./Mensajeria
     ports:
-      - "8083:8080"  # Cambiado el puerto de escucha para evitar conflicto con el servidor
+      - "1234:1234"
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
 
   servidor:
     build:
       context: ./SecretariaSaludServer
     ports:
-      - "8082:8080"
+      - "12345:12345"
     depends_on:
-      - mensajeria
+      - mysql
 
   cliente:
     build:
@@ -32,7 +41,9 @@ services:
       - "8081:8080"
     depends_on:
       - servidor
+    environment:
+      SERVER_HOST: servidor
+      SERVER_PORT: 12345
 
 volumes:
   mysql_data:
-

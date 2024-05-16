@@ -25,7 +25,6 @@ public class RegistroMedicosServlet extends HttpServlet {
             String serverAddress = "localhost"; // Dirección IP del servidor
             int serverPort = 12345; // Puerto del servidor
             SocketCliente socketCliente = new SocketCliente(serverAddress, serverPort);
-
             // Ejemplo: Enviar mensaje al servidor
             String respuesta = socketCliente.enviarMensaje("insertarMedico!" + cedula + "!" + nombre + "!" + contrasena + "!" + especialidad);
             System.out.println("Respuesta del servidor: " + respuesta);

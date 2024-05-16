@@ -4,19 +4,15 @@ import interfaces.IConexion;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Conexion implements IConexion {
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "1234";
-    private static final String HOST = "localhost";
-    private static final String PORT = "3306";
+    private static final String PASSWORD = "Blaziquen_01";
+    private static final String HOST = "proyectodistribuidos-mysql-1";  // Nombre del servicio MySQL en Docker
+    private static final String PORT = "3306";   // Puerto interno del contenedor MySQL
     private static final String DATABASE = "secretariadesalud";
-    private static final String CLASSNAME = "com.mysql.jdbc.Driver";
+    private static final String CLASSNAME = "com.mysql.cj.jdbc.Driver";
     private static final String URL = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE;
-//    private static final String CLASSNAME = "com.mysql.cj.jdbc.Driver";
-//    private static final String URL = "jdbc:mysql://proyectodistribuidos-mysql-1:3306/" + DATABASE + "?useSSL=false&allowPublicKeyRetrieval=true";
     private Connection con;
 
     public Conexion() {
@@ -24,14 +20,15 @@ public class Conexion implements IConexion {
             Class.forName(CLASSNAME);
             boolean connected = false;
             int attempts = 0;
-            while (!connected && attempts < 5) {
+            while (!connected && attempts < 10) {
                 try {
                     con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
                     connected = true;
+                    System.out.println("Conexion exitosa");
                 } catch (SQLException e) {
                     System.err.println("Intento de conexión fallido, reintentando en 5 segundos...");
                     e.printStackTrace();
-                    Thread.sleep(5000);  // Espera 5 segundos antes de reintentar
+                    Thread.sleep(10000);  // Espera 5 segundos antes de reintentar
                     attempts++;
                 }
             }
@@ -59,6 +56,7 @@ public class Conexion implements IConexion {
                 con.close();
             } catch (SQLException e) {
                 System.err.println("Error al cerrar la conexión: " + e.getMessage());
+                e.printStackTrace();
             }
         }
     }

@@ -11,8 +11,8 @@ public class SocketCliente {
     private int serverPort;
 
     public SocketCliente(String serverAddress, int serverPort) {
-        this.serverAddress = serverAddress;
-        this.serverPort = serverPort;
+        serverAddress = serverAddress;
+        serverPort = serverPort;
     }
 
     public String enviarMensaje(String mensaje) {
@@ -20,15 +20,16 @@ public class SocketCliente {
         try (Socket socket = new Socket(serverAddress, serverPort);
              PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
-
+            System.out.println("Establecio conexion");
             // Enviar mensaje al servidor
             out.println(mensaje);
-
+            System.out.println("Envio mensaje");
             // Leer respuesta del servidor
             respuestaServidor = in.readLine();
 
         } catch (IOException e) {
             System.err.println("Error al enviar/recibir mensaje: " + e.getMessage());
+            e.printStackTrace();
         }
         return respuestaServidor;
     }

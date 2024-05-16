@@ -22,6 +22,7 @@ public class SocketServer {
         try {
             serverSocket = new ServerSocket(port);
             System.out.println("Servidor iniciado. Esperando conexiones en el puerto " + port + "...");
+            System.out.println("IP: " + serverSocket.getInetAddress().getHostAddress());
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("Cliente conectado desde " + clientSocket.getInetAddress().getHostName());

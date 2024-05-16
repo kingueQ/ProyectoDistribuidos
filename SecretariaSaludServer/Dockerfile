@@ -29,7 +29,7 @@ COPY --from=build /app/target/SecretariaSaludServer-1.0-SNAPSHOT.jar .
 COPY --from=build /app/target/lib ./lib
 
 # Expone el puerto en el que tu aplicación escucha (ajústalo según tu aplicación)
-EXPOSE 8080
+EXPOSE 12345
 
 # Comando de inicio para ejecutar tu aplicación cuando se inicie el contenedor
 CMD ["java", "-cp", "SecretariaSaludServer-1.0-SNAPSHOT.jar:lib/*", "servidor.SocketServer"]

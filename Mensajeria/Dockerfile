@@ -31,7 +31,7 @@ RUN apt-get update && \
     apt-get clean
 
 # Expone el puerto en el que tu aplicación escucha (ajústalo según tu aplicación)
-EXPOSE 8080
+EXPOSE 1234
 
 # Comando de inicio para ejecutar tu aplicación cuando se inicie el contenedor
 CMD ["java", "-jar", "Mensajeria-1.0-SNAPSHOT.jar"]

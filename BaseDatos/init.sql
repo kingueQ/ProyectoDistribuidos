@@ -1,9 +1,16 @@
 CREATE DATABASE IF NOT EXISTS secretariadesalud;
-USE secretariadesalud;
 
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'proyectodistribuidos-servidor-1' IDENTIFIED BY 'Blaziquen_01' WITH GRANT OPTION;
+-- Evita recrear el usuario root si ya existe
+SET @existing_user = (SELECT COUNT(*) FROM mysql.user WHERE user = 'root' AND host = '%');
+SET @create_user = IF(@existing_user = 0, 'CREATE USER ''root''@''%'' IDENTIFIED BY ''Blaziquen_01'';', 'SELECT ''User already exists.'';');
+PREPARE stmt FROM @create_user;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
 
-CREATE TABLE Pacientes (
+GRANT ALL PRIVILEGES ON secretariadesalud.* TO 'root'@'%';
+FLUSH PRIVILEGES;
+
+CREATE TABLE IF NOT EXISTS Pacientes (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(100),
     curp VARCHAR(18),
@@ -12,7 +19,7 @@ CREATE TABLE Pacientes (
     pass VARCHAR(20)
 );
 
-CREATE TABLE Expedientes (
+CREATE TABLE IF NOT EXISTS Expedientes (
     id INT PRIMARY KEY AUTO_INCREMENT,
     imagenes TEXT,
     textos TEXT,
@@ -23,7 +30,7 @@ CREATE TABLE Expedientes (
     FOREIGN KEY (idPaciente) REFERENCES Pacientes(id)
 );
 
-CREATE TABLE Medicos (
+CREATE TABLE IF NOT EXISTS Medicos (
     id INT PRIMARY KEY AUTO_INCREMENT,
     cedula VARCHAR(20),
     nombre VARCHAR(100),
