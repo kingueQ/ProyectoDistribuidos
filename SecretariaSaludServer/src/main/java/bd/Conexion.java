@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class Conexion implements IConexion {
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "Blaziquen_01";
+    private static final String PASSWORD = "1234";
     private static final String HOST = "localhost";
     private static final String PORT = "3306";
     private static final String DATABASE = "secretariadesalud";

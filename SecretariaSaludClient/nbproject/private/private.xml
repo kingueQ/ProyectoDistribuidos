@@ -2,6 +2,35 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/src/java/cliente/SocketCliente.java</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/registroMedicos.jsp</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/registroPacientes.jsp</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/about.jsp</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/META-INF/context.xml</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/informacionM.jsp</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/index.jsp</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/expedientesM.jsp</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/indexP.jsp</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/img/logo.png</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/indexM.jsp</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/css/estilos.css</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/src/java/servlet/SolicitarAcceso.java</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/src/java/servlet/SubirImagenServlet.java</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/src/java/servlet/RegistroPacientesServlet.java</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/src/java/prueba/Prueba.java</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/src/java/servlet/SubirPdfServlet.java</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/src/java/servlet/SubirTextoServlet.java</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/src/java/servlet/AutenticacionServlet.java</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/src/java/servlet/RegistroMedicosServlet.java</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/src/java/servlet/ModificarMedicosServlet.java</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/miExpedienteP.jsp</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/contact.jsp</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/src/java/servlet/CambiarAccesoServlet.java</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/expedienteM.jsp</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/js/comandos.js</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/src/java/servlet/VerExpedienteServlet.java</file>
+            <file>file:/C:/Users/Cristian/Documents/GitHub/ProyectoDistribuidos/ProyectoDistribuidos/SecretariaSaludClient/web/informacionP.jsp</file>
+        </group>
     </open-files>
 </project-private>
