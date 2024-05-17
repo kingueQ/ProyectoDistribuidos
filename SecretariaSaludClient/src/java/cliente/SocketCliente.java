@@ -11,8 +11,8 @@ public class SocketCliente {
     private int serverPort;
 
     public SocketCliente(String serverAddress, int serverPort) {
-        serverAddress = serverAddress;
-        serverPort = serverPort;
+        this.serverAddress = serverAddress;
+        this.serverPort = serverPort;
     }
 
     public String enviarMensaje(String mensaje) {
