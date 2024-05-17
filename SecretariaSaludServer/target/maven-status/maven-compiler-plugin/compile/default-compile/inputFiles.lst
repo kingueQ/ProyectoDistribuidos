@@ -1,22 +1,3 @@
-<<<<<<< Updated upstream
-C:\Users\Cristian\Documents\GitHub\ProyectoDistribuidos\ProyectoDistribuidos\SecretariaSaludServer\src\main\java\logica\Logica.java
-C:\Users\Cristian\Documents\GitHub\ProyectoDistribuidos\ProyectoDistribuidos\SecretariaSaludServer\src\main\java\bd\Conexion.java
-C:\Users\Cristian\Documents\GitHub\ProyectoDistribuidos\ProyectoDistribuidos\SecretariaSaludServer\src\main\java\interfaces\IExpedienteService.java
-C:\Users\Cristian\Documents\GitHub\ProyectoDistribuidos\ProyectoDistribuidos\SecretariaSaludServer\src\main\java\dominio\Medico.java
-C:\Users\Cristian\Documents\GitHub\ProyectoDistribuidos\ProyectoDistribuidos\SecretariaSaludServer\src\main\java\logica\ILogica.java
-C:\Users\Cristian\Documents\GitHub\ProyectoDistribuidos\ProyectoDistribuidos\SecretariaSaludServer\src\main\java\servicios\ExpedienteService.java
-C:\Users\Cristian\Documents\GitHub\ProyectoDistribuidos\ProyectoDistribuidos\SecretariaSaludServer\src\main\java\servicios\AuthService.java
-C:\Users\Cristian\Documents\GitHub\ProyectoDistribuidos\ProyectoDistribuidos\SecretariaSaludServer\src\main\java\interfaces\IPacienteService.java
-C:\Users\Cristian\Documents\GitHub\ProyectoDistribuidos\ProyectoDistribuidos\SecretariaSaludServer\src\main\java\servicios\MedicoService.java
-C:\Users\Cristian\Documents\GitHub\ProyectoDistribuidos\ProyectoDistribuidos\SecretariaSaludServer\src\main\java\servidor\SocketServer.java
-C:\Users\Cristian\Documents\GitHub\ProyectoDistribuidos\ProyectoDistribuidos\SecretariaSaludServer\src\main\java\servicios\PacienteService.java
-C:\Users\Cristian\Documents\GitHub\ProyectoDistribuidos\ProyectoDistribuidos\SecretariaSaludServer\src\main\java\interfaces\IConexion.java
-C:\Users\Cristian\Documents\GitHub\ProyectoDistribuidos\ProyectoDistribuidos\SecretariaSaludServer\src\main\java\dominio\Paciente.java
-C:\Users\Cristian\Documents\GitHub\ProyectoDistribuidos\ProyectoDistribuidos\SecretariaSaludServer\src\main\java\interfaces\IAuthService.java
-C:\Users\Cristian\Documents\GitHub\ProyectoDistribuidos\ProyectoDistribuidos\SecretariaSaludServer\src\main\java\interfaces\IMedicoService.java
-C:\Users\Cristian\Documents\GitHub\ProyectoDistribuidos\ProyectoDistribuidos\SecretariaSaludServer\src\main\java\dominio\Expediente.java
-C:\Users\Cristian\Documents\GitHub\ProyectoDistribuidos\ProyectoDistribuidos\SecretariaSaludServer\src\main\java\cliente\SocketCliente.java
-=======
 C:\Users\kingu\Documents\GitHub\ProyectoDistribuidos\SecretariaSaludServer\src\main\java\interfaces\IAuthService.java
 C:\Users\kingu\Documents\GitHub\ProyectoDistribuidos\SecretariaSaludServer\src\main\java\servicios\AuthService.java
 C:\Users\kingu\Documents\GitHub\ProyectoDistribuidos\SecretariaSaludServer\src\main\java\interfaces\IMedicoService.java
@@ -34,4 +15,3 @@ C:\Users\kingu\Documents\GitHub\ProyectoDistribuidos\SecretariaSaludServer\src\m
 C:\Users\kingu\Documents\GitHub\ProyectoDistribuidos\SecretariaSaludServer\src\main\java\dominio\Paciente.java
 C:\Users\kingu\Documents\GitHub\ProyectoDistribuidos\SecretariaSaludServer\src\main\java\dominio\Expediente.java
 C:\Users\kingu\Documents\GitHub\ProyectoDistribuidos\SecretariaSaludServer\src\main\java\interfaces\IConexion.java
->>>>>>> Stashed changes
