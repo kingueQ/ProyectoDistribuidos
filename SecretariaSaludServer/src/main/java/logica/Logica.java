@@ -29,10 +29,6 @@ public class Logica implements ILogica {
     private static final Logger LOGGER = Logger.getLogger(Logica.class.getName());
     private static final SecretKey SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-    /**
-     * Constructor de la clase Logica.
-     * Inicializa los servicios y establece la conexión a la base de datos.
-     */
     public Logica() {
         conexion = new Conexion();
         Connection conn = conexion.getConexion();
@@ -42,12 +38,6 @@ public class Logica implements ILogica {
         authService = new AuthService(pacienteService, medicoService);
     }
 
-    /**
-     * Inserta un nuevo expediente para un paciente.
-     * 
-     * @param idPaciente El ID del paciente.
-     * @return true si el expediente se inserta correctamente, false en caso contrario.
-     */
     @Override
     public boolean insertarExpediente(String idPaciente) {
         try {
@@ -62,16 +52,6 @@ public class Logica implements ILogica {
         }
     }
 
-    /**
-     * Inserta un nuevo paciente en el sistema.
-     * 
-     * @param nombre El nombre del paciente.
-     * @param curp El CURP del paciente.
-     * @param fechaNac La fecha de nacimiento del paciente en formato dd/MM/yyyy.
-     * @param tutor El nombre del tutor del paciente.
-     * @param pass La contraseña del paciente.
-     * @return true si el paciente se inserta correctamente, false en caso contrario.
-     */
     @Override
     public boolean insertarPaciente(String nombre, String curp, String fechaNac, String tutor, String pass) {
         try {
@@ -84,15 +64,6 @@ public class Logica implements ILogica {
         }
     }
 
-    /**
-     * Inserta un nuevo médico en el sistema.
-     * 
-     * @param cedula La cédula del médico.
-     * @param nombre El nombre del médico.
-     * @param pass La contraseña del médico.
-     * @param especialidad La especialidad del médico.
-     * @return true si el médico se inserta correctamente, false en caso contrario.
-     */
     @Override
     public boolean insertarMedico(String cedula, String nombre, String pass, String especialidad) {
         try {
@@ -104,12 +75,6 @@ public class Logica implements ILogica {
         }
     }
 
-    /**
-     * Elimina un expediente del sistema.
-     * 
-     * @param idExpediente El ID del expediente a eliminar.
-     * @return true si el expediente se elimina correctamente, false en caso contrario.
-     */
     @Override
     public boolean eliminarExpediente(String idExpediente) {
         try {
@@ -120,39 +85,16 @@ public class Logica implements ILogica {
         }
     }
 
-    /**
-     * Elimina un paciente del sistema.
-     * 
-     * @param curp El CURP del paciente a eliminar.
-     * @return true si el paciente se elimina correctamente, false en caso contrario.
-     */
     @Override
     public boolean eliminarPaciente(String curp) {
         return pacienteService.eliminarPaciente(curp);
     }
 
-    /**
-     * Elimina un médico del sistema.
-     * 
-     * @param cedula La cédula del médico a eliminar.
-     * @return true si el médico se elimina correctamente, false en caso contrario.
-     */
     @Override
     public boolean eliminarMedico(String cedula) {
         return medicoService.eliminarMedico(cedula);
     }
 
-    /**
-     * Actualiza la información de un expediente.
-     * 
-     * @param idExpediente El ID del expediente a actualizar.
-     * @param idPaciente El ID del paciente asociado al expediente.
-     * @param medicosAcceso Lista de médicos con acceso al expediente.
-     * @param imagenes Imágenes asociadas al expediente.
-     * @param documentos Documentos asociados al expediente.
-     * @param textos Textos asociados al expediente.
-     * @return true si el expediente se actualiza correctamente, false en caso contrario.
-     */
     @Override
     public boolean actualizarExpediente(String idExpediente, String idPaciente, String medicosAcceso, String imagenes, String documentos, String textos) {
         try {
@@ -169,16 +111,6 @@ public class Logica implements ILogica {
         }
     }
 
-    /**
-     * Actualiza la información de un paciente.
-     * 
-     * @param nombre El nombre del paciente.
-     * @param curp El CURP del paciente.
-     * @param fechaNac La fecha de nacimiento del paciente en formato dd/MM/yyyy.
-     * @param tutor El nombre del tutor del paciente.
-     * @param pass La contraseña del paciente.
-     * @return true si el paciente se actualiza correctamente, false en caso contrario.
-     */
     @Override
     public boolean actualizarPaciente(String nombre, String curp, String fechaNac, String tutor, String pass) {
         try {
@@ -191,15 +123,6 @@ public class Logica implements ILogica {
         }
     }
 
-    /**
-     * Actualiza la información de un médico.
-     * 
-     * @param cedula La cédula del médico.
-     * @param nombre El nombre del médico.
-     * @param pass La contraseña del médico.
-     * @param especialidad La especialidad del médico.
-     * @return true si el médico se actualiza correctamente, false en caso contrario.
-     */
     @Override
     public boolean actualizarMedico(String cedula, String nombre, String pass, String especialidad) {
         try {
@@ -211,11 +134,6 @@ public class Logica implements ILogica {
         }
     }
 
-    /**
-     * Consulta todos los pacientes registrados en el sistema.
-     * 
-     * @return Una cadena con la información de todos los pacientes.
-     */
     @Override
     public String consultarPacientes() {
         List<Paciente> pacientes = pacienteService.obtenerPacientes();
@@ -226,11 +144,6 @@ public class Logica implements ILogica {
         return result.toString();
     }
 
-    /**
-     * Consulta todos los expedientes registrados en el sistema.
-     * 
-     * @return Una cadena con la información de todos los expedientes.
-     */
     @Override
     public String consultarExpedientes() {
         List<Expediente> expedientes = expedienteService.obtenerExpedientes();
@@ -241,11 +154,6 @@ public class Logica implements ILogica {
         return result.toString();
     }
 
-    /**
-     * Consulta todos los médicos registrados en el sistema.
-     * 
-     * @return Una cadena con la información de todos los médicos.
-     */
     @Override
     public String consultarMedicos() {
         List<Medico> medicos = medicoService.obtenerMedicos();
@@ -256,12 +164,6 @@ public class Logica implements ILogica {
         return result.toString();
     }
 
-    /**
-     * Consulta la información de un paciente específico.
-     * 
-     * @param curp El CURP del paciente a consultar.
-     * @return Una cadena con la información del paciente, o un mensaje indicando que no se encontró.
-     */
     @Override
     public String consultarPaciente(String curp) {
         Optional<Paciente> pacienteOpt = Optional.ofNullable(pacienteService.consultarPaciente(curp));
@@ -269,12 +171,6 @@ public class Logica implements ILogica {
                 .orElse("Paciente no encontrado");
     }
 
-    /**
-     * Consulta la información de un médico específico.
-     * 
-     * @param cedula La cédula del médico a consultar.
-     * @return Una cadena con la información del médico, o un mensaje indicando que no se encontró.
-     */
     @Override
     public String consultarMedico(String cedula) {
         Optional<Medico> medicoOpt = Optional.ofNullable(medicoService.consultarMedico(cedula));
@@ -282,12 +178,6 @@ public class Logica implements ILogica {
                 .orElse("Médico no encontrado");
     }
 
-    /**
-     * Consulta el expediente asociado a un paciente específico.
-     * 
-     * @param curp El CURP del paciente a consultar.
-     * @return Una cadena con la información del expediente, o un mensaje indicando que no se encontró.
-     */
     @Override
     public String consultarExpediente(String curp) {
         Paciente paciente = pacienteService.consultarPaciente(curp);
@@ -299,48 +189,26 @@ public class Logica implements ILogica {
         }
     }
 
-    /**
-     * Autentica un paciente en el sistema.
-     * 
-     * @param curp El CURP del paciente.
-     * @param pass La contraseña del paciente.
-     * @return true si la autenticación es exitosa, false en caso contrario.
-     */
     @Override
     public boolean autenticarPaciente(String curp, String pass) {
         return authService.autenticarPaciente(curp, pass);
     }
 
-    /**
-     * Autentica un médico en el sistema.
-     * 
-     * @param cedula La cédula del médico.
-     * @param pass La contraseña del médico.
-     * @return true si la autenticación es exitosa, false en caso contrario.
-     */
     @Override
     public boolean autenticarMedico(String cedula, String pass) {
         return authService.autenticarMedico(cedula, pass);
     }
 
-    /**
-     * Autentica un usuario en el sistema, generando un token JWT si la autenticación es exitosa.
-     * 
-     * @param credencial El CURP del paciente o la cédula del médico.
-     * @param pass La contraseña del usuario.
-     * @return true si la autenticación es exitosa, false en caso contrario.
-     */
+    @Override
     public boolean autenticar(String credencial, String pass) {
-        if (credencial.length() == 18) {
-            boolean autenticacionPaciente = this.autenticarPaciente(credencial, pass);
-            if (autenticacionPaciente) {
+        if (credencial.length() == 18) { // Si la credencial tiene 18 caracteres, es un CURP (paciente)
+            if (autenticarPaciente(credencial, pass)) {
                 String token = generarToken(credencial);
                 System.out.println("Token generado para paciente " + credencial + ": " + token);
                 return true;
             }
-        } else {
-            boolean autenticacionMedico = this.autenticarMedico(credencial, pass);
-            if (autenticacionMedico) {
+        } else { // De lo contrario, es una cédula (médico)
+            if (autenticarMedico(credencial, pass)) {
                 String token = generarToken(credencial);
                 System.out.println("Token generado para médico " + credencial + ": " + token);
                 return true;
@@ -349,12 +217,7 @@ public class Logica implements ILogica {
         return false;
     }
 
-    /**
-     * Genera un token JWT para un sujeto dado con claims personalizados.
-     * 
-     * @param sujeto El sujeto (CURP del paciente o cédula del médico).
-     * @return El token JWT generado.
-     */
+    // Genera un token JWT para un sujeto dado con claims personalizados
     public static String generarToken(String sujeto) {
         return Jwts.builder()
                 .setSubject(sujeto)
@@ -365,12 +228,7 @@ public class Logica implements ILogica {
                 .compact();
     }
 
-    /**
-     * Valida un token JWT.
-     * 
-     * @param token El token JWT a validar.
-     * @return Los claims del token si es válido.
-     */
+    // Validar el token JWT
     public static Claims validarToken(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(SECRET_KEY)
@@ -379,13 +237,6 @@ public class Logica implements ILogica {
                 .getBody();
     }
 
-    /**
-     * Envía un mensaje a través de un socket cliente.
-     * 
-     * @param nombre El nombre del destinatario.
-     * @param mensaje El mensaje a enviar.
-     * @return true si el mensaje se envía correctamente, false en caso contrario.
-     */
     @Override
     public boolean enviar(String nombre, String mensaje) {
         SocketCliente cliente = new SocketCliente("localhost", 1234);
@@ -393,24 +244,12 @@ public class Logica implements ILogica {
         return "true".equalsIgnoreCase(result);
     }
 
-    /**
-     * Recibe un mensaje a través de un socket cliente.
-     * 
-     * @param nombre El nombre del destinatario.
-     * @return El mensaje recibido.
-     */
     @Override
     public String recibir(String nombre) {
         SocketCliente cliente = new SocketCliente("localhost", 1234);
         return cliente.enviarMensaje("recibir!" + nombre);
     }
 
-    /**
-     * Cambia el estado de acceso de un expediente asociado a un paciente.
-     * 
-     * @param curp El CURP del paciente.
-     * @return true si el estado de acceso se cambia correctamente, false en caso contrario.
-     */
     @Override
     public boolean cambiarAcceso(String curp) {
         Paciente paciente = pacienteService.consultarPaciente(curp);
@@ -424,13 +263,6 @@ public class Logica implements ILogica {
         return false;
     }
 
-    /**
-     * Modifica la lista de médicos con acceso a un expediente.
-     * 
-     * @param curp El CURP del paciente.
-     * @param medicos La nueva lista de médicos con acceso.
-     * @return true si los médicos se modifican correctamente, false en caso contrario.
-     */
     @Override
     public boolean modificarMedicos(String curp, String medicos) {
         Paciente paciente = pacienteService.consultarPaciente(curp);
@@ -443,4 +275,3 @@ public class Logica implements ILogica {
         return false;
     }
 }
-
