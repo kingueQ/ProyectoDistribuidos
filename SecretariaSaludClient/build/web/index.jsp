@@ -5,6 +5,13 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    HttpSession objSesion = request.getSession(false);
+    String cedula = (String) objSesion.getAttribute("cedula");
+    String curp = (String) objSesion.getAttribute("curp");
+    objSesion.setAttribute("cedula", null);
+    objSesion.setAttribute("curp", null);
+%>
 <!DOCTYPE html>
 <html lang="es">
 <head>

@@ -33,8 +33,11 @@
     System.out.println(respuesta);
     String[] paciente = respuesta.split("!");
     boolean access=false;
-    if(expediente[4]!=null&&expediente[4].equals(cedula)){
-        access=true;
+    String[] ex=expediente[4].split("-");
+    for(int i=0;i<ex.length;i++){
+        if(ex[i].equals(cedula)){
+            access=true;
+        }
     }
 %>
 <!DOCTYPE html>

@@ -19,9 +19,13 @@
     SocketCliente cliente = new SocketCliente(serverAddress, serverPort);
     String respuesta = cliente.enviarMensaje("consultarPacientes");
     System.out.println(respuesta);
-    String respuesta1=respuesta.substring(0, respuesta.length()-1);
-    System.out.println(respuesta1);
-    String[] expedientes=respuesta1.split("!\\?");
+    if(respuesta!=null&&respuesta.length()>1){
+        respuesta=respuesta.substring(0, respuesta.length()-1);
+    }else{
+        response.sendRedirect("indexM.jsp");
+    }
+    System.out.println(respuesta);
+    String[] expedientes=respuesta.split("!\\?");
 %>
 <!DOCTYPE html>
 <html lang="es">

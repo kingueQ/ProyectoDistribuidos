@@ -48,9 +48,9 @@
                 <label for="cedula">Cédula:</label>
                 <input type="text" id="cedula" name="cedula" value="<%= medico[1] %>" disabled><br><br>
                 <label for="especialidad">Especialidad:</label>
-                <input type="text" id="especialidad" name="especialidad" value="<%= medico[4] %>" disabled><br><br>
+                <input type="text" id="especialidad" name="especialidad" value="<%= medico[3] %>" disabled><br><br>
                 <label for="contraseña">Contraseña:</label>
-                <input type="password" id="contraseña" name="contraseña" value="<%= medico[3] %>" disabled>
+                <input type="password" id="contraseña" name="contraseña" value="<%= medico[4] %>" disabled>
                 <button type="button" id="btnModificarContraseña">Modificar</button><br><br>
             </form>
         </div>
