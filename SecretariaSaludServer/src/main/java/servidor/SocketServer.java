@@ -41,7 +41,7 @@ public class SocketServer {
             String message;
             while ((message = input.readLine()) != null) {
                 System.out.println("Mensaje recibido: " + message);
-                String[] parts = message.split("!");
+                String[] parts = message.split("!", -1);
                 String command = parts[0];
                 boolean result;
                 switch (command) {

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class Conexion implements IConexion {
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "1234";
+    private static final String PASSWORD = "Blaziquen_01";
     private static final String HOST = "localhost";  // Nombre del servicio MySQL en Docker
     private static final String PORT = "3306";   // Puerto interno del contenedor MySQL
     private static final String DATABASE = "secretariadesalud";

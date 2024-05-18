@@ -20,6 +20,9 @@ public class Consumer {
     }
 
     public String recibir(String nombre, long timeoutMillis) throws IOException {
+        if(nombre==null||nombre.equals("null")||nombre.equals("")){
+            return "";
+        }
         String QUEUE_NAME = nombre;
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
 

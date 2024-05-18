@@ -69,11 +69,12 @@ public class ExpedienteService implements IExpedienteService {
     }
 
     @Override
-    public List<Expediente> obtenerExpedientes() {
-        List<Expediente> expedientes = new ArrayList<>();
-        String query = "SELECT * FROM expedientes";
-        try (PreparedStatement statement = conexion.prepareStatement(query);
-             ResultSet result = statement.executeQuery()) {
+public List<Expediente> obtenerExpedientes() {
+    List<Expediente> expedientes = new ArrayList<>();
+    String query = "SELECT * FROM expedientes WHERE acceso=?";
+    try (PreparedStatement statement = conexion.prepareStatement(query)) {
+        statement.setBoolean(1, true);
+        try (ResultSet result = statement.executeQuery()) {
             while (result.next()) {
                 Expediente expediente = new Expediente();
                 expediente.setId(result.getInt("id"));
@@ -85,11 +86,13 @@ public class ExpedienteService implements IExpedienteService {
                 expediente.setAcceso(result.getBoolean("acceso"));
                 expedientes.add(expediente);
             }
-        } catch (SQLException e) {
-            System.err.println("Error al obtener expedientes: " + e.getMessage());
         }
-        return expedientes;
+    } catch (SQLException e) {
+        System.err.println("Error al obtener expedientes: " + e.getMessage());
     }
+    return expedientes;
+}
+
 
     @Override
     public Expediente consultarExpediente(int idPaciente) {

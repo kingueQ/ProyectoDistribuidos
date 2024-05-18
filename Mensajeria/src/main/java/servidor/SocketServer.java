@@ -53,11 +53,16 @@ public class SocketServer {
                         output.println(result ? "true" : "false");
                         break;
                     case "recibir":
-                        // Llama al método para insertar medico en PacienteDAO
-                        String mensajes = recibir(parts[1]);
-                        // Enviar resultado al cliente
-                        output.println(mensajes);
-                        break;
+                        if (parts[1] == null) {
+                            output.println("");
+                            break;
+                        } else {
+                            // Llama al método para insertar medico en PacienteDAO
+                            String mensajes = recibir(parts[1]);
+                            // Enviar resultado al cliente
+                            output.println(mensajes);
+                            break;
+                        }
                     default:
                         output.println("Comando no reconocido: " + command);
                         break;
@@ -67,8 +72,8 @@ public class SocketServer {
             System.err.println("Error al manejar cliente: " + e.getMessage());
         }
     }
-    
-    public boolean enviar(String nombre, String mensaje){
+
+    public boolean enviar(String nombre, String mensaje) {
         try {
             Sender sender = new Sender();
             sender.enviar(nombre, mensaje);
@@ -81,9 +86,9 @@ public class SocketServer {
         }
         return false;
     }
-    
-    public String recibir(String nombre){
-        try{
+
+    public String recibir(String nombre) {
+        try {
             Consumer consumer = new Consumer();
             String mensajes = consumer.recibir(nombre, 3000);
             consumer.cerrar();

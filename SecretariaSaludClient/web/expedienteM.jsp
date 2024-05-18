@@ -27,11 +27,15 @@
     int serverPort = 12345; // Puerto del servidor
     SocketCliente cliente = new SocketCliente(serverAddress, serverPort);
     String respuesta = cliente.enviarMensaje("consultarExpediente!" + curp);
-    String[] expediente = respuesta.split("!");
+    String[] expediente = respuesta.split("!", -1);
     cliente = new SocketCliente(serverAddress, serverPort);
     respuesta = cliente.enviarMensaje("consultaPaciente!" + curp);
     System.out.println(respuesta);
     String[] paciente = respuesta.split("!");
+    boolean access=false;
+    if(expediente[4]!=null&&expediente[4].equals(cedula)){
+        access=true;
+    }
 %>
 <!DOCTYPE html>
 <html lang="es">
@@ -64,16 +68,20 @@
             <h2>Imágenes</h2>
             <table>
                 <% String[] imagenes = expediente[1].split("-");
-                    if (imagenes != null && imagenes.length>1) {
-                        for (int i=1;i<imagenes.length;i++) {
-                String a = imagenes[i];
+                    if (imagenes != null && imagenes.length > 1) {
+                        for (int i = 1; i < imagenes.length; i++) {
+                            String a = imagenes[i];
+                            String encodedUrl = a.replace(" ", "%20");
                 %>
                 <tr>
-                    <td> <img src="<%= a%>" alt="" width="500" height="500"/></td>
+                    <td> <img src="<%= encodedUrl%>" alt="" width="500" height="500"/></td>
                 </tr>
                 <% }
                     }%>
             </table>
+            <% if(access){
+                
+            %>
             <form action="SubirImagenServlet" method="post" enctype="multipart/form-data">
                 <input type="file" name="imagen" accept="image/*">
                 <input type="hidden" name="cedula" value="<%= cedula%>">
@@ -81,20 +89,29 @@
                 <button type="submit">Subir Imagen</button>
             </form>
             <hr>
-
+            <% } %>
             <h2>Documentos PDF</h2>
             <table>
                 <% String[] documentos = expediente[2].split("-");
-                    if (documentos != null && documentos.length>1) {
-                        for (int i=1;i<documentos.length;i++) {
-                String a = documentos[i];
+                    if (documentos != null && documentos.length > 1) {
+                        for (int i = 1; i < documentos.length; i++) {
+                            String a = documentos[i];
+                            // Encuentra la última aparición de '/' para extraer el nombre del archivo
+                            int lastSlashIndex = a.lastIndexOf('/');
+                            String fileName = (lastSlashIndex >= 0) ? a.substring(lastSlashIndex + 1) : a;
                 %>
                 <tr>
-                    <td> <a href="<%= a%>" target="_blank">Abrir PDF</a></td>
+                    <td> <a href="<%= a.replace(" ", "%20")%>" target="_blank"><%= fileName%></a></td>
                 </tr>
-                <% }
-                    }%>
+                <%
+                        }
+                    }
+                %>
             </table>
+
+            <% if(access){
+                
+            %>
             <form action="SubirPdfServlet" method="post" enctype="multipart/form-data">
                 <input type="file" name="document" accept=".pdf">
                 <input type="hidden" name="cedula" value="<%= cedula%>">
@@ -102,13 +119,13 @@
                 <button type="submit">Subir Documento</button>
             </form>
             <hr>
-
+            <% } %>
             <h2>Textos</h2>
             <table>
                 <% String[] textos = expediente[3].split("-");
-                    if (textos != null && textos.length>1) {
-                        for (int i=1;i<textos.length;i++) {
-                String a = textos[i];
+                    if (textos != null && textos.length > 1) {
+                        for (int i = 1; i < textos.length; i++) {
+                            String a = textos[i];
                 %>
                 <tr>
                     <td> <%= a%> </td>
@@ -116,6 +133,9 @@
                 <% }
                     }%>
             </table>
+            <% if(access){
+                
+            %>
             <form action="SubirTextoServlet" method="post" onsubmit="return validarTexto()">
                 <textarea id="texto" name="texto" rows="4" cols="50"></textarea><br>
                 <input type="hidden" name="cedula" value="<%= cedula%>">
@@ -123,9 +143,21 @@
                 <button type="submit">Agregar Texto</button>
             </form>
             <hr>
-
-            <h2>Acceso del Expediente</h2>
-            <p>Tipo de Acceso: <%= expediente[4]%></p>
+            <% } %>
+            <h2>Medicos autorizados</h2>
+            
+            <table>
+                <% String[] medicos = expediente[4].split("-");
+                    if (medicos != null && medicos.length > 1) {
+                        for (int i = 1; i < medicos.length; i++) {
+                            String a = medicos[i];
+                %>
+                <tr>
+                    <td> <%= a%> </td>
+                </tr>
+                <% }
+                    }%>
+            </table>
             <form action="SolicitarAcceso" method="post"">
                 <input type="hidden" name="cedula" value="<%= cedula%>">
                 <input type="hidden" name="curp" value="<%= curp%>">

@@ -20,7 +20,7 @@
     int serverPort = 12345; // Puerto del servidor
     SocketCliente cliente = new SocketCliente(serverAddress, serverPort);
     String respuesta = cliente.enviarMensaje("consultarExpediente!" + curp);
-    String[] expediente = respuesta.split("!");
+    String[] expediente = respuesta.split("!", -1);
     cliente = new SocketCliente(serverAddress, serverPort);
     respuesta = cliente.enviarMensaje("consultaPaciente!" + curp);
     System.out.println(respuesta);
@@ -73,9 +73,10 @@
                     if (imagenes != null && imagenes.length > 1) {
                         for (int i = 1; i < imagenes.length; i++) {
                             String a = imagenes[i];
+                            String encodedUrl = a.replace(" ", "%20");
                 %>
                 <tr>
-                    <td> <img src="<%= a%>" alt="" width="500" height="500"/></td>
+                    <td> <img src="<%= encodedUrl%>" alt="" width="500" height="500"/></td>
                 </tr>
                 <% }
                     }%>
@@ -88,12 +89,17 @@
                     if (documentos != null && documentos.length > 1) {
                         for (int i = 1; i < documentos.length; i++) {
                             String a = documentos[i];
+                            // Encuentra la última aparición de '/' para extraer el nombre del archivo
+                            int lastSlashIndex = a.lastIndexOf('/');
+                            String fileName = (lastSlashIndex >= 0) ? a.substring(lastSlashIndex + 1) : a;
                 %>
                 <tr>
-                    <td> <a href="<%= a%>" target="_blank">Abrir PDF</a></td>
+                    <td> <a href="<%= a.replace(" ", "%20")%>" target="_blank"><%= fileName%></a></td>
                 </tr>
-                <% }
-                    }%>
+                <%
+                        }
+                    }
+                %>
             </table>
             <hr>
 
@@ -124,8 +130,9 @@
             <table>
                 <%
                     String[] medicos = expediente[4].split("-");
-                    if (medicos != null) {
-                        for (String medico : medicos) {
+                    if (medicos != null && medicos.length>1) {
+                        for (int i=1;i<medicos.length;i++) {
+                            String medico=medicos[i];
                 %>
                 <tr>
                     <td><%= medico%></td>

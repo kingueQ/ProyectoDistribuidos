@@ -139,7 +139,9 @@ public class Logica implements ILogica {
         List<Paciente> pacientes = pacienteService.obtenerPacientes();
         StringBuilder result = new StringBuilder();
         for (Paciente paciente : pacientes) {
-            result.append(paciente.getId()).append("!").append(paciente.getCurp()).append("!").append(paciente.getNombre()).append("!").append(paciente.getFechaNacimiento()).append("!").append(paciente.getTutor()).append("!?");
+            if(expedienteService.consultarExpediente(paciente.getId()).getAcceso()){
+                result.append(paciente.getId()).append("!").append(paciente.getCurp()).append("!").append(paciente.getNombre()).append("!").append(paciente.getFechaNacimiento()).append("!").append(paciente.getTutor()).append("!?");
+            }
         }
         return result.toString();
     }

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Base64;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "RegistroMedicosServlet", urlPatterns = {"/RegistroMedicosServlet"})
 public class RegistroMedicosServlet extends HttpServlet {
@@ -50,6 +51,8 @@ public class RegistroMedicosServlet extends HttpServlet {
 
             if (respuesta.equals("true")) {
                 // Si la respuesta es true, redirigir a indexM.jsp
+                HttpSession objSesion = request.getSession(true);
+                objSesion.setAttribute("cedula", cedula);
                 response.sendRedirect("indexM.jsp");
             } else {
                 // Si la respuesta es false, redirigir a index.jsp

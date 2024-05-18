@@ -16,6 +16,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Base64;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "RegistroPacientesServlet", urlPatterns = {"/RegistroPacientesServlet"})
 public class RegistroPacientesServlet extends HttpServlet {
@@ -85,6 +86,8 @@ public class RegistroPacientesServlet extends HttpServlet {
                 socketCliente = new SocketCliente(serverAddress, serverPort);
                 respuesta = socketCliente.enviarMensaje("insertarExpediente!" + partes[0]);
                 // Si la respuesta es true, redirigir a indexP.jsp
+                HttpSession objSesion = request.getSession(true);
+                objSesion.setAttribute("curp", curp);
                 response.sendRedirect("indexP.jsp");
             } else {
                 // Si la respuesta es false, redirigir a index.jsp
